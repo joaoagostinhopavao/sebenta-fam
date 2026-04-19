@@ -1,0 +1,283 @@
+---
+title: "Multimédia Digital — Fundamentos e Organização da Sebenta"
+subtitle: "Ferramentas e Aplicações Multimédia"
+author: "João Pavão"
+date: 2026-04-03
+lang: pt-PT
+---
+
+## Introdução {#sec-01-intro}
+
+Esta sebenta acompanha a unidade curricular de **Ferramentas e Aplicações
+Multimédia** (FAM) do 1.º ano / 2.º semestre da Licenciatura em Comunicação e
+Multimédia da Universidade de Trás-os-Montes e Alto Douro. Os capítulos
+correspondem às aulas leccionadas e são disponibilizados progressivamente ao
+longo do semestre.
+
+O presente capítulo serve dois propósitos: apresentar os fundamentos
+conceptuais da multimédia digital — base teórica necessária para todos os
+capítulos seguintes — e indicar a organização actual da sebenta, com uma
+descrição sumária dos conteúdos disponíveis.
+
+---
+
+## O que é Multimédia? {#sec-01-multimedia}
+
+### Definição e integração de media {#sec-01-multimedia-def}
+
+O termo *multimédia* é frequentemente mal interpretado como sinónimo de
+"muitos media" — a ideia de que basta combinar texto, imagem e som para ter
+multimédia. Esta visão é imprecisa. O que distingue a multimédia de uma
+simples colecção de ficheiros é a **integração coerente**: a combinação
+estruturada de diferentes formas de informação com um propósito comunicativo
+unificado.
+
+Neste sentido, uma página web que integra texto editorial, fotografia,
+infografia animada e áudio narrativo é multimédia; a mesma página com os
+mesmos elementos dispostos sem relação entre si não o é. O critério
+determinante é a coerência da integração, não a contagem de tipos de media.
+
+Os elementos que compõem um sistema multimédia digital incluem texto, imagem
+(estática e animada), som, vídeo e interactividade. A interactividade é o
+elemento que distingue o multimédia digital do multimédia analógico
+tradicional: permite que o utilizador participe na experiência, navegando,
+configurando e respondendo ao sistema.
+
+### Multimédia analógica vs digital {#sec-01-analogico-digital}
+
+A transição do analógico para o digital não é apenas uma mudança de suporte
+— é uma mudança fundamental na natureza da representação da informação.
+
+| | Analógico | Digital |
+|:--|:--|:--|
+| Sinal | Contínuo — varia suavemente | Discreto — valores separados |
+| Exemplos | Jornal impresso, rádio, cinema | Website, podcast, streaming |
+| Representação | Física directa (tinta, sulco, campo magnético) | Codificação numérica |
+| Cópia | Degradação progressiva | Sem perda (bit a bit) |
+| Transmissão | Degradação com distância | Robusta (detecção de erros) |
+
+O elemento central do digital é precisamente este: **tudo é representação
+codificada**. Um ficheiro `.jpg` não contém uma fotografia — contém uma
+sequência de números que, interpretada segundo a especificação JPEG, produz
+uma imagem quando renderizada. Um ficheiro `.mp3` não contém som — contém
+amostras de amplitude codificadas segundo o algoritmo MPEG Audio Layer III.
+
+Esta característica tem uma consequência prática fundamental para a web:
+compreender o que está dentro de um ficheiro é condição necessária para
+escolher o formato certo, optimizar o desempenho e controlar a qualidade.
+
+## Tudo é Representação Numérica {#sec-01-representacao}
+
+### O princípio fundamental {#sec-01-representacao-principio}
+
+Dentro de um computador, nada existe na sua forma "real". Tudo — texto,
+imagem, som, vídeo — é armazenado e processado como sequências de números.
+Este princípio é a pedra angular da literacia digital:
+
+- **Texto** → sequências de códigos numéricos (ASCII, UTF-8)
+- **Imagem** → matriz de píxeis, cada um com um valor numérico de cor
+- **Som** → sequência de amostras de amplitude ao longo do tempo
+- **Vídeo** → sequência de imagens (píxeis) sincronizada com som
+
+A consequência directa é que todo o processamento multimédia é,
+fundamentalmente, processamento matemático: filtrar uma imagem é aplicar
+operações matriciais; comprimir áudio é aplicar transformadas de frequência;
+transmitir vídeo é gerir fluxos de bits num canal com largura de banda finita.
+
+### Sinal analógico vs sinal digital {#sec-01-sinal}
+
+O mundo físico é analógico: os fenómenos que nos interessam — luz, som,
+temperatura — variam de forma contínua no tempo e na amplitude. Um microfone
+capta uma onda sonora como variação contínua de tensão eléctrica; uma câmara
+analógica regista luz como variação contínua de densidade química numa
+película.
+
+Um computador, pelo contrário, só consegue armazenar valores discretos: um
+número finito de níveis, medidos em instantes separados. A conversão do
+contínuo para o discreto — a **digitalização** — implica sempre uma
+aproximação. Duas decisões determinam a qualidade dessa aproximação:
+
+- **Com que frequência se mede** (frequência de amostragem): determina a
+  resolução temporal do sinal digital.
+- **Com que precisão se mede** (profundidade de bits): determina o número
+  de níveis de amplitude disponíveis.
+
+Mais amostras e mais bits produzem maior fidelidade — mas também mais dados.
+Surge assim o compromisso central do digital: **mais qualidade exige mais
+armazenamento e mais largura de banda**. A resposta a este compromisso é a
+compressão, tema desenvolvido em detalhe no capítulo seguinte.
+
+### O que é um ficheiro? {#sec-01-ficheiro}
+
+Um ficheiro é uma estrutura organizada de dados codificados segundo uma
+especificação, interpretável por software. Não há nada de intuitivamente
+"visual" ou "sonoro" num ficheiro — é apenas uma sequência de bytes.
+
+O que torna um ficheiro `.jpg` diferente de um ficheiro `.mp3` não é o
+conteúdo bruto em bytes, mas a **especificação** que define como esses bytes
+devem ser interpretados. Um browser que abre um `.jpg` aplica o algoritmo
+de descompressão JPEG; um leitor de áudio que abre um `.mp3` aplica o
+descodificador MPEG. O mesmo ficheiro com a extensão errada permanece
+ilegível — a extensão é apenas uma indicação do formato, não uma
+propriedade intrínseca dos dados.
+
+Esta distinção tem implicações práticas: a escolha do formato de ficheiro
+não é apenas uma questão de compatibilidade, mas de qualidade, tamanho e
+desempenho. Um ficheiro `.png` de uma fotografia e um ficheiro `.jpg` da
+mesma fotografia contêm a mesma imagem, mas com características radicalmente
+diferentes de tamanho, qualidade e capacidade de transparência.
+
+## A Web como Sistema Multimédia {#sec-01-web}
+
+### Arquitectura da web {#sec-01-web-arquitectura}
+
+A web é o sistema multimédia mais abrangente da história. Sobre uma
+infraestrutura cliente-servidor, combina texto, imagem, som e vídeo numa
+experiência interactiva acessível a partir de qualquer dispositivo.
+
+A construção de uma página web envolve quatro camadas complementares:
+
+- **Infraestrutura** — servidor e cliente (browser): definem onde os dados
+  residem e como são transferidos.
+- **Estrutura** — HTML semântico: organiza o conteúdo em elementos com
+  significado (parágrafo, cabeçalho, lista, tabela).
+- **Apresentação** — CSS modular: define a aparência visual — tipografia,
+  cor, layout, responsividade.
+- **Conteúdo media** — imagem, som, vídeo: os elementos multimédia
+  propriamente ditos, com os seus formatos, tamanhos e requisitos de
+  desempenho específicos.
+
+A interacção entre estas camadas é o objecto central desta UC.
+
+### A performance como parte do design {#sec-01-performance}
+
+Um elemento frequentemente subestimado no design web é o desempenho.
+O tamanho dos ficheiros, a escolha de formatos e o grau de compressão
+têm impacto directo na velocidade de carregamento das páginas — e, por
+extensão, na experiência do utilizador e no posicionamento em motores de
+busca.
+
+Num contexto onde um utilizador abandona uma página que demora mais de
+três segundos a carregar, a optimização de media deixa de ser um pormenor
+técnico e torna-se uma decisão de design. O digital é sempre um compromisso
+entre qualidade e velocidade; a literacia para navegar esse compromisso é
+uma das competências nucleares desta UC.
+
+---
+
+## Estrutura da UC e da Sebenta {#sec-01-estrutura}
+
+### Programa e blocos temáticos {#sec-01-programa}
+
+A UC organiza-se em quatro blocos temáticos sequenciais:
+
+| Bloco | Tema | Conteúdo central |
+|:-----:|:-----|:----------------|
+| 1 | Fundamentos do Digital | Multimédia, codificação, sistemas numéricos, digitalização, compressão, formatos |
+| 2 | CSS e Arquitectura Visual | Layout, responsividade, metodologia BEM |
+| 3 | SASS e Organização Profissional | Pré-processamento CSS, estrutura de projecto |
+| 4 | Desenvolvimento SPA | Angular — componentes, rotas, gestão de estado |
+
+### Avaliação {#sec-01-avaliacao}
+
+A classificação final (CF) calcula-se pela fórmula:
+
+$$\text{CF} = \text{TT} \times 0{,}4 + \text{TP1} \times 0{,}3 + \text{TP2} \times 0{,}3$$
+
+onde TT é o Teste Teórico (via Moodle, 40%), TP1 é o Trabalho Prático 1
+(grupo de 3, 30%) e TP2 é o Trabalho Prático 2 (grupo de 3, 30%).
+A aprovação exige CF ≥ 9,5. Cada componente tem nota mínima obrigatória:
+TT ≥ 8,5; cada TP ≥ 7.
+
+Existem três modos de avaliação:
+
+- **Modo 1 — Avaliação Contínua:** condição TT ≥ 8,5, cada TP ≥ 7 e
+  média prática ≥ 8,5; aprovação com CF ≥ 9,5.
+- **Modo 2 — Avaliação Complementar:** para estudantes com prática ≥ 9,5
+  que repetem apenas o TT; aprovação com CF ≥ 9,5.
+- **Modo 3 — Exame:** condição prática ≥ 8,5; aprovação com CF ≥ 9,5.
+
+Em qualquer dos modos, o docente pode exigir defesa oral dos trabalhos a
+qualquer estudante, independentemente da nota obtida. Consultar o
+regulamento completo no Infoestudante.
+
+---
+
+## Conteúdos Disponíveis na Sebenta {#sec-01-indice}
+
+Os capítulos da sebenta são disponibilizados progressivamente ao longo do
+semestre, à medida que as aulas são leccionadas. A tabela seguinte lista os
+capítulos actualmente disponíveis e o seu conteúdo central.
+
+::: {.callout-note}
+#### Estado actual da sebenta
+Esta sebenta encontra-se em construção activa. Os capítulos listados abaixo
+estão disponíveis para consulta. Novos capítulos serão adicionados ao longo
+do semestre.
+:::
+
+### Capítulo 2 — Sistemas Numéricos e Codificação {.unnumbered}
+
+Apresenta os fundamentos matemáticos da representação digital: o sistema
+binário (base 2), o sistema hexadecimal (base 16) e as regras de conversão
+entre bases. Analisa a capacidade de representação em função do número de
+bits e aplica estes conceitos à codificação de texto (ASCII, UTF-8) e de
+cor (modelo RGB). Inclui demonstração interactiva de conversão entre bases
+e calculadora de capacidade de armazenamento.
+
+**Conceitos principais:** bit, byte, binário, hexadecimal, conversão entre
+bases, ASCII, UTF-8, True Color, representação numérica de media.
+
+---
+
+### Capítulo 3 — Digitalização e Compressão de Som e Imagem {.unnumbered}
+
+Explica como os sinais analógicos contínuos são convertidos em sequências
+numéricas discretas (digitalização), analisando as três etapas do processo:
+amostragem, quantização e codificação. Apresenta o teorema de Nyquist e as
+consequências da sua violação (aliasing). Aborda a compressão sem perdas
+(Huffman, RLE) e com perdas (JPEG, MP3), com critérios práticos de escolha
+de formato para web e para arquivo.
+
+**Conceitos principais:** amostragem, frequência de amostragem, teorema de
+Nyquist, quantização, profundidade de bits, compressão sem perdas, compressão
+com perdas, JPEG, PNG, SVG, WebP, WAV, MP3, AAC.
+
+---
+
+### Capítulo 4 — Imagem Digital e Cor para Web {.unnumbered}
+
+Aprofunda a representação da imagem digital e da cor em contexto web.
+Analisa a estrutura da imagem rasterizada (grelha de píxeis, fórmula de
+tamanho bitmap), compara imagens rasterizadas com imagens vectoriais (SVG),
+e detalha os quatro formatos bitmap principais para web (GIF, JPEG, PNG,
+WebP). Explica os fundamentos da percepção humana da cor (cones S/M/L,
+tricromacia), os modelos de cor RGB, CMYK, HSV e HSL, e a representação
+de cor em CSS. Aborda profundidade de cor, canal alfa, resolução, PPI/DPI
+e correcção de gama. Inclui cinco ferramentas interactivas (calculadora
+bitmap, conversor hexadecimal, demonstração CSS, selector HSL, calculadora
+PPI).
+
+**Conceitos principais:** píxel, resolução, bpp, SVG, GIF, JPEG, PNG, WebP,
+cones S/M/L, síntese aditiva, RGB, CMYK, HSL, HSV, canal alfa, True Color,
+PPI, DPI, factor gama, sRGB.
+
+---
+
+## Síntese do Capítulo {#sec-01-sintese}
+
+A multimédia digital não é uma colecção de ficheiros — é a integração
+coerente de diferentes formas de informação num sistema com propósito
+comunicativo. Toda a informação digital é representação numérica: texto,
+imagem, som e vídeo são, em última análise, sequências de bits codificadas
+segundo especificações.
+
+A digitalização converte sinais contínuos em representações discretas,
+introduzindo um compromisso fundamental entre qualidade e volume de dados.
+A compressão é a resposta técnica a esse compromisso. A web é o sistema
+multimédia mais abrangente da actualidade, e a literacia para construir
+experiências digitais eficientes — escolhendo formatos, controlando
+tamanhos, optimizando desempenho — é o objectivo central desta UC.
+
+Os capítulos seguintes desenvolvem cada um destes temas com rigor e com
+aplicação directa ao desenvolvimento web.

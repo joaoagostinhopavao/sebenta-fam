@@ -1,0 +1,38 @@
+# Prefácio {.unnumbered}
+
+```{=html}
+<div class="hero">
+  <div class="hero-badge">UTAD · 2025/2026</div>
+  <h1>Ferramentas e Aplicações Multimédia</h1>
+  <h2>Sebenta da Unidade Curricular</h2>
+  <p>Licenciatura em Comunicação e Multimédia &nbsp;·&nbsp; 1.º Ano / 2.º Semestre<br>
+     Universidade de Trás-os-Montes e Alto Douro</p>
+</div>
+```
+
+Esta sebenta acompanha a unidade curricular de **Ferramentas e Aplicações Multimédia**
+do 1.º ano / 2.º semestre da Licenciatura em Comunicação e Multimédia da
+Universidade de Trás-os-Montes e Alto Douro.
+
+## Organização da sebenta {.unnumbered}
+
+A sebenta está organizada em capítulos correspondentes às aulas leccionadas,
+cobrindo os quatro blocos temáticos da UC:
+
+1. **Fundamentos do Digital** — multimédia, codificação, sistemas numéricos,
+   digitalização e compressão
+2. **CSS e Arquitectura Visual** — layout, responsividade, metodologia BEM
+3. **SASS e Organização Profissional** — pré-processamento CSS, estrutura de projecto
+4. **Desenvolvimento SPA** — Angular, componentes, rotas, gestão de estado
+
+## Como usar esta sebenta {.unnumbered}
+
+Os exemplos de código ao longo do texto são funcionais e podem ser executados
+directamente no browser. Os exercícios no final de cada capítulo destinam-se
+à consolidação autónoma dos conceitos apresentados.
+
+## Autores {.unnumbered}
+
+**João Pavão** — UTAD
+
+**Sérgio Madeira** — UTAD

@@ -1,0 +1,422 @@
+---
+title: "Sistemas Numéricos e Codificação"
+subtitle: "Ferramentas e Aplicações Multimédia"
+author: "João Pavão"
+date: 2026-04-03
+lang: pt-PT
+---
+
+## Motivação {#sec-motivacao}
+
+No capítulo anterior estabeleceu-se uma ideia fundamental: tudo o que
+existe dentro de um computador é representação. Texto, imagem, som
+e vídeo não são armazenados na sua forma original — são convertidos
+em sequências de números e guardados como tal. Esta afirmação, porém,
+levanta uma questão imediata: que números são esses, e como funcionam?
+
+Para compreender multimédia digital com rigor, não basta saber que
+"tudo são números". É necessário compreender *como* esses números são
+organizados, *que sistemas* os computadores utilizam para os representar,
+e *porquê* esses sistemas foram escolhidos. É precisamente esse o
+objectivo deste capítulo.
+
+A abordagem parte do sistema decimal — o mais familiar — e progride
+para os sistemas binário e hexadecimal, pilares da representação
+digital. No final, analisa-se a forma como estes sistemas se aplicam
+directamente a texto, cores e outros elementos multimédia.
+
+---
+
+## O Sistema Decimal {#sec-decimal}
+
+### Representação posicional {#sec-decimal-posicional}
+
+O sistema decimal é o sistema numérico do quotidiano. É utilizado
+de forma tão natural que raramente se pensa na sua estrutura interna.
+No entanto, compreender essa estrutura é o ponto de partida para
+entender qualquer outro sistema numérico.
+
+O sistema decimal é um sistema de **base 10**: utiliza dez dígitos
+distintos — 0, 1, 2, 3, 4, 5, 6, 7, 8 e 9 — e o valor de cada
+dígito depende da posição que ocupa no número. A este princípio
+chama-se **representação posicional**: cada posição corresponde a
+uma potência de 10, e o valor total do número é a soma dos produtos
+de cada dígito pela respectiva potência.
+
+Considere-se o número 345:
+
+$$345 = 3 \times 10^2 + 4 \times 10^1 + 5 \times 10^0 = 300 + 40 + 5$$
+
+O dígito 3 não vale simplesmente "três" — vale trezentos, porque
+ocupa a posição das centenas ($10^2$). O dígito 4 vale quarenta,
+porque ocupa a posição das dezenas ($10^1$). O dígito 5 vale cinco,
+porque ocupa a posição das unidades ($10^0$).
+
+Um segundo exemplo ilustra como esta decomposição funciona mesmo
+quando um dos dígitos é zero. No número 502:
+
+$$502 = 5 \times 10^2 + 0 \times 10^1 + 2 \times 10^0 = 500 + 0 + 2$$
+
+O zero na posição das dezenas não contribui para o valor total, mas
+é indispensável para preservar a posição correcta dos restantes
+dígitos. Esta ideia — a de que a posição determina o valor — será
+o fio condutor de todos os sistemas numéricos que se seguem.
+
+---
+
+## O Sistema Binário {#sec-binario}
+
+### Por que base 2? {#sec-binario-razao}
+
+Os circuitos electrónicos que constituem um computador são, na sua
+essência, comutadores: dispositivos que se encontram num de dois
+estados físicos possíveis — conduzem corrente eléctrica ou não
+conduzem. A estes dois estados associam-se convencionalmente os
+valores **1** (ligado, tensão alta) e **0** (desligado, tensão baixa).
+
+Esta limitação física não é uma desvantagem — é, pelo contrário,
+uma vantagem de engenharia: circuitos com apenas dois estados são
+mais simples, mais fiáveis e mais rápidos do que circuitos que
+tentassem distinguir dez níveis de tensão diferentes. A consequência
+directa é que os computadores representam toda a informação num
+sistema de **base 2**, designado **sistema binário**.
+
+### Estrutura do sistema binário {#sec-binario-estrutura}
+
+O sistema binário utiliza apenas dois dígitos: **0** e **1**. Cada
+um destes dígitos designa-se **bit**, abreviatura de *binary digit*
+— dígito binário. O bit é a unidade mínima de informação digital.
+
+Tal como no sistema decimal, o valor de cada bit depende da posição
+que ocupa, sendo cada posição uma potência de 2. A capacidade de
+representação cresce exponencialmente com o número de bits: com
+$n$ bits é possível representar $2^n$ valores distintos.
+
+### Conversão binário → decimal {#sec-bin-dec}
+
+A conversão de um número binário para decimal segue o mesmo
+princípio de expansão posicional apresentado para o sistema decimal,
+substituindo as potências de 10 por potências de 2.
+
+Considere-se o número binário $1011_2$:
+
+| Bit | Posição | Potência | Valor |
+|:---:|:-------:|:--------:|------:|
+| 1   | 3       | $2^3$    | 8     |
+| 0   | 2       | $2^2$    | 0     |
+| 1   | 1       | $2^1$    | 2     |
+| 1   | 0       | $2^0$    | 1     |
+
+$$1011_2 = 8 + 0 + 2 + 1 = 11_{10}$$
+
+### Conversão decimal → binário {#sec-dec-bin}
+
+A conversão inversa realiza-se através de **divisões sucessivas por 2**:
+
+1. Dividir o número por 2 e registar o resto (0 ou 1).
+2. Repetir a divisão com o quociente obtido.
+3. Continuar até o quociente ser zero.
+4. Ler os restos **de baixo para cima** — esse é o resultado binário.
+
+Ilustra-se com a conversão de $219_{10}$:
+
+| Divisão  | Quociente | Resto |
+|:--------:|:---------:|:-----:|
+| 219 ÷ 2  | 109       | **1** |
+| 109 ÷ 2  | 54        | **1** |
+| 54 ÷ 2   | 27        | **0** |
+| 27 ÷ 2   | 13        | **1** |
+| 13 ÷ 2   | 6         | **1** |
+| 6 ÷ 2    | 3         | **0** |
+| 3 ÷ 2    | 1         | **1** |
+| 1 ÷ 2    | 0         | **1** |
+
+Lendo os restos de baixo para cima: $219_{10} = 11011011_2$.
+
+Verificação: $11011011_2 = 128 + 64 + 0 + 16 + 8 + 0 + 2 + 1 = 219_{10} \checkmark$
+
+---
+
+## O Sistema Hexadecimal {#sec-hexadecimal}
+
+### Motivação e estrutura {#sec-hex-motivacao}
+
+À medida que os valores numéricos crescem, as suas representações
+binárias tornam-se longas e difíceis de ler. O número 219, que em
+decimal ocupa três dígitos, necessita de oito bits em binário.
+Endereços de memória, identificadores de cor e outros valores
+comuns em programação podem facilmente atingir 32 ou 64 bits —
+sequências praticamente ilegíveis para um ser humano.
+
+O **sistema hexadecimal** surge como solução de legibilidade: um
+sistema de **base 16** com dezasseis símbolos — os dígitos 0 a 9
+e as letras A a F:
+
+| Símbolo | A  | B  | C  | D  | E  | F  |
+|:-------:|:--:|:--:|:--:|:--:|:--:|:--:|
+| Valor   | 10 | 11 | 12 | 13 | 14 | 15 |
+
+O hexadecimal é amplamente utilizado em programação, na representação
+de endereços de memória, cores digitais em CSS e protocolos de rede.
+
+### Relação directa com o binário {#sec-hex-binario}
+
+$16 = 2^4$, o que significa que **4 bits correspondem exactamente
+a 1 dígito hexadecimal** — sem resíduos:
+
+| Binário | Hex | Binário | Hex |
+|:-------:|:---:|:-------:|:---:|
+| 0000    | 0   | 1000    | 8   |
+| 0001    | 1   | 1001    | 9   |
+| 0010    | 2   | 1010    | A   |
+| 0011    | 3   | 1011    | B   |
+| 0100    | 4   | 1100    | C   |
+| 0101    | 5   | 1101    | D   |
+| 0110    | 6   | 1110    | E   |
+| 0111    | 7   | 1111    | F   |
+
+Esta tabela é tudo o que é necessário memorizar — substituição
+directa, sem qualquer cálculo.
+
+### Conversão decimal → hexadecimal (método directo) {#sec-dec-hex-directo}
+
+Divisões sucessivas por 16, registando os restos de baixo para cima.
+Convertendo $219_{10}$:
+
+| Divisão   | Quociente | Resto      |
+|:---------:|:---------:|:----------:|
+| 219 ÷ 16  | 13        | **11 → B** |
+| 13 ÷ 16   | 0         | **13 → D** |
+
+$219_{10} = \text{DB}_{16}$ — mas os restos excedem 9 e têm de ser
+convertidos mentalmente para letra (11→B, 13→D). Em valores maiores,
+esta conversão acumula-se e torna-se propensa a erro.
+
+### Conversão decimal → hexadecimal (método prático) {#sec-dec-hex-pratico}
+
+$$\text{DECIMAL} \xrightarrow{\div 2} \text{BINÁRIO}
+\xrightarrow{4\,\text{bits}} \text{HEXADECIMAL}$$
+
+**Passo 1** — Converter para binário (restos sempre 0 ou 1, sem ambiguidade):
+$219_{10} = 11011011_2$
+
+**Passo 2** — Agrupar em blocos de 4 bits da direita para a esquerda:
+
+$$\underbrace{1101}_{D}\underbrace{1011}_{B} \;\Rightarrow\; \text{DB}_{16}$$
+
+O resultado é idêntico, mas o processo é mais seguro. O binário actua
+como **ponte natural** entre o decimal e o hexadecimal.
+
+### Conversão hexadecimal → decimal (método directo) {#sec-hex-dec-directo}
+
+Expansão posicional em potências de 16. Convertendo $\text{DB}_{16}$:
+
+$$\text{DB}_{16} = 13 \times 16^1 + 11 \times 16^0 = 208 + 11 = 219_{10}$$
+
+O método funciona, mas exige cálculo de potências de 16 e conversão
+mental das letras. Para valores com três ou mais dígitos, torna-se
+progressivamente mais exigente.
+
+### Conversão hexadecimal → decimal (método prático) {#sec-hex-dec-pratico}
+
+$$\text{HEXADECIMAL} \xrightarrow{4\,\text{bits}} \text{BINÁRIO}
+\xrightarrow{\text{expansão}} \text{DECIMAL}$$
+
+**Passo 1** — Substituição directa de cada dígito hex por 4 bits:
+$D \rightarrow 1101$, $B \rightarrow 1011$ $\;\Rightarrow\;$ $\text{DB}_{16} = 11011011_2$
+
+**Passo 2** — Expansão posicional:
+$11011011_2 = 128 + 64 + 16 + 8 + 2 + 1 = 219_{10} \checkmark$
+
+### Conversão binário → hexadecimal {#sec-bin-hex}
+
+A conversão mais simples — sem qualquer cálculo. Agrupam-se os bits
+em blocos de 4 da direita para a esquerda e substitui-se cada bloco:
+
+$$\underbrace{1100}_{C}\underbrace{1101}_{D} \;\Rightarrow\; \text{CD}_{16}$$
+
+Se o número de bits não for múltiplo de 4, completa-se o bloco mais
+à esquerda com zeros sem alterar o valor.
+
+### O binário como ponte entre bases {#sec-binario-ponte}
+
+O binário é a linguagem nativa dos computadores, o hexadecimal é
+a notação compacta para humanos, e o decimal é o sistema do mundo
+real. O binário é a ponte natural entre os três.
+
+| Conversão | Método directo | Via binário |
+|:----------|:--------------|:------------|
+| DEC → BIN | Divisões por 2 | — |
+| BIN → DEC | Expansão posicional | — |
+| DEC → HEX | Divisões por 16 (restos 0–F) | DEC → BIN → HEX ✓ |
+| HEX → DEC | Expansão em potências de 16 | HEX → BIN → DEC ✓ |
+| BIN → HEX | — | Blocos de 4 bits ✓ |
+| HEX → BIN | — | Substituição directa ✓ |
+
+Sempre que a conversão directa envolver base 16, o caminho via
+binário é mais simples e mais fiável.
+
+---
+
+## Bits e Bytes {#sec-bits-bytes}
+
+### Definições {#sec-bits-bytes-def}
+
+O **bit** é a unidade mínima de informação digital — um único
+dígito binário, com valor 0 ou 1. O agrupamento fundamental é o
+**byte**: um conjunto de 8 bits, unidade básica de armazenamento.
+
+$$1\,\text{byte} = 8\,\text{bits} \qquad 2^8 = 256\,\text{valores possíveis}$$
+
+### Capacidade de representação {#sec-capacidade}
+
+| Bits | Valores possíveis | Aplicação típica |
+|:----:|------------------:|:-----------------|
+| 8    | 256               | 1 canal de cor RGB; 1 byte de texto |
+| 16   | 65 536            | Áudio de alta fidelidade |
+| 24   | 16 777 216        | Cor verdadeira — 3 canais RGB × 8 bits |
+| 32   | 4 294 967 296     | Endereços IPv4; cor com canal alfa |
+
+---
+
+## Aplicação em Multimédia {#sec-aplicacao}
+
+### Representação de texto — ASCII e Unicode {#sec-texto-ascii}
+
+A representação de texto em computadores baseia-se numa ideia
+simples: associar um número inteiro a cada carácter. O sistema
+**ASCII** (*American Standard Code for Information Interchange*),
+desenvolvido na década de 1960, foi o primeiro padrão amplamente
+adoptado. Define 128 caracteres codificados em 7 bits.
+
+| Carácter | Decimal | Hexadecimal | Binário  |
+|:--------:|:-------:|:-----------:|:--------:|
+| A        | 65      | 41          | 01000001 |
+| B        | 66      | 42          | 01000010 |
+| a        | 97      | 61          | 01100001 |
+| 0        | 48      | 30          | 00110000 |
+
+Note-se que 'A' e 'a' têm códigos diferentes (65 e 97) — para o
+computador, são dois valores numéricos distintos.
+
+O ASCII revelou-se insuficiente para representar todos os alfabetos
+do mundo. O **Unicode** define um espaço de codificação com mais de
+um milhão de pontos de código. A codificação **UTF-8**, a mais
+utilizada na web, é retrocompatível com o ASCII e representa os
+caracteres mais comuns em 1 byte, expandindo para 2, 3 ou 4 bytes
+conforme necessário.
+
+### Representação de cor — modelo RGB {#sec-cor-rgb}
+
+O modelo **RGB** (vermelho, verde e azul — *Red, Green, Blue*)
+representa cada cor como combinação de três canais de 8 bits
+(valores 0–255). Um píxel RGB ocupa 24 bits (3 bytes), totalizando
+$2^{24} = 16\,777\,216$ cores — designadas **cor verdadeira** (*true color*).
+
+| Cor            | R   | G   | B   | Hexadecimal |
+|:---------------|:---:|:---:|:---:|:-----------:|
+| Vermelho puro  | 255 | 0   | 0   | \#FF0000    |
+| Verde puro     | 0   | 255 | 0   | \#00FF00    |
+| Azul puro      | 0   | 0   | 255 | \#0000FF    |
+| Branco         | 255 | 255 | 255 | \#FFFFFF    |
+| Preto          | 0   | 0   | 0   | \#000000    |
+
+A notação hexadecimal das cores é directamente legível: cada canal
+de 8 bits corresponde a exactamente 2 dígitos hexadecimais.
+`#FF0000` significa R=FF$_{16}$=255, G=00$_{16}$=0, B=00$_{16}$=0.
+
+### Representação de imagem, áudio e vídeo {#sec-media-numerica}
+
+Uma **imagem digital** é uma matriz bidimensional de píxeis, cada
+um representado por três bytes RGB. Uma imagem de 1920×1080 píxeis
+ocupa cerca de 6 MB sem compressão.
+
+O **áudio digital** é uma sequência de amostras numéricas da
+amplitude de uma onda sonora — tipicamente de 16 bits no padrão de
+alta fidelidade, ou de 24 bits em produção profissional.
+
+O **vídeo digital** combina uma sequência de imagens (fotogramas)
+com áudio sincronizado.
+
+Em todos os casos: nada é "real" dentro do computador.
+Tudo são números — codificados e interpretados segundo convenções.
+
+---
+
+## Síntese {#sec-sintese}
+
+- O **sistema binário** é a linguagem nativa dos computadores,
+  motivada pela natureza física dos circuitos electrónicos.
+- O **sistema hexadecimal** é uma notação compacta baseada na
+  equivalência directa de 4 bits por dígito.
+- O **binário funciona como ponte** entre decimal e hexadecimal:
+  sempre que uma conversão directa envolver base 16, o caminho
+  via binário é mais simples e mais fiável.
+- Com $n$ bits representam-se $2^n$ valores distintos.
+- Toda a informação multimédia é, em última análise, uma sequência
+  de números binários interpretados segundo convenções de codificação.
+
+---
+
+## Exercícios {#sec-exercicios}
+
+### Conversões numéricas
+
+::: {.callout-caution}
+#### Exercício 2.1 — Binário para decimal
+Converta os seguintes números binários para decimal,
+mostrando a expansão posicional completa:
+
+a) $10110100_2$
+b) $11111111_2$
+c) $10000001_2$
+
+*Verificação:* 180, 255 e 129.
+:::
+
+::: {.callout-caution}
+#### Exercício 2.2 — Decimal para binário
+Converta para binário pelo método das divisões sucessivas por 2:
+
+a) $137_{10}$
+b) $200_{10}$
+c) $255_{10}$
+
+*Verificação:* $10001001_2$, $11001000_2$ e $11111111_2$.
+:::
+
+::: {.callout-caution}
+#### Exercício 2.3 — Hexadecimal
+Realize as seguintes conversões, usando o binário como ponte
+sempre que adequado:
+
+a) $\text{A3}_{16} \rightarrow$ decimal
+b) $187_{10} \rightarrow$ hexadecimal
+c) $\text{FF}_{16} \rightarrow$ decimal
+d) $\text{1F4}_{16} \rightarrow$ decimal
+
+*Verificação:* 163, BB$_{16}$, 255 e 500.
+:::
+
+### Aplicação em multimédia
+
+::: {.callout-caution}
+#### Exercício 2.4 — Cores RGB
+A cor de fundo de um elemento CSS é `#3A7FCC`.
+
+a) Identifique os valores decimais dos três canais RGB.
+b) Qual o canal dominante? O que isso implica visualmente?
+c) Quantas cores distintas são representáveis com 24 bits?
+
+*Orientação para b):* O canal B — CC$_{16}$ = 204 — é o dominante.
+A cor tende para tons azulados.
+:::
+
+::: {.callout-caution}
+#### Exercício 2.5 — Capacidade de representação
+Uma imagem não comprimida tem 800×600 píxeis a 24 bits por píxel.
+
+a) Quantos píxeis tem a imagem?
+b) Quantos bytes ocupa sem compressão?
+c) E em kilobytes? E em megabytes?
+:::

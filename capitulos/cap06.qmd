@@ -1,0 +1,1093 @@
+---
+title: "Frameworks CSS, Bootstrap e Micro-interações"
+subtitle: "Ferramentas e Aplicações Multimédia"
+author: "João Pavão"
+date: 2026-04-19
+lang: pt-PT
+---
+
+## Introdução {#sec-06-intro}
+
+O capítulo anterior construiu layouts a partir do zero — box model, floats,
+Flexbox, Grid. Este capítulo parte dessas fundações e introduz uma camada de
+abstração: os **frameworks CSS**, bibliotecas que encapsulam padrões de layout
+e componentes em classes reutilizáveis.
+
+O Bootstrap é o framework mais utilizado no mundo e o escolhido nesta UC. Mas
+antes de o usar, é essencial compreender o que ele faz por baixo — a grelha
+de 12 colunas que estudámos no capítulo anterior, as media queries, os modelos
+Flexbox — porque essa compreensão é o que distingue quem usa um framework
+com domínio de quem apenas copia classes.
+
+A segunda metade do capítulo aborda as **micro-interações** em CSS puro:
+transições, transformações e animações. O Bootstrap usa estas técnicas
+internamente; aprenderem-nas em CSS nativo significa levá-las para qualquer
+projecto, com ou sem framework.
+
+---
+
+## 6.1 O Problema que os Frameworks Resolvem {#sec-06-problema}
+
+### 6.1.1 CSS manual a escala {#sec-06-problema-escala}
+
+Num projecto pequeno, escrever CSS do zero é rápido e directo. A partir de
+um certo ponto, a escala impõe três problemas estruturais:
+
+**Consistência** — manter os mesmos espaçamentos, tamanhos e cores em dezenas
+de componentes (botões, formulários, navbars) exige repetição manual. Uma
+alteração ao estilo de um botão pode implicar editar centenas de linhas em
+múltiplos ficheiros.
+
+**Responsividade** — escrever `@media` queries para todos os breakpoints de
+cada componente é trabalhoso. Vinte componentes com quatro breakpoints cada
+equivale a oitenta blocos de media queries para manter.
+
+**Manutenção** — o CSS não tem sistema de tipos nem módulos nativos. CSS não
+estruturado cresce para um estado que os programadores designam por *CSS soup*:
+um ficheiro difícil de ler, difícil de alterar sem quebrar algo inesperado.
+
+### 6.1.2 O que é um framework CSS {#sec-06-o-que-e}
+
+Um framework CSS é uma biblioteca de estilos, componentes e convenções
+prontas a usar — escritas uma vez, reutilizáveis em qualquer projecto. Em
+vez de escrever o CSS de cada botão ou navbar do zero, o framework fornece
+classes que se aplicam directamente no HTML.
+
+O compromisso é claro: **ganha-se velocidade e consistência**, perde-se algum
+controlo fino sobre o CSS gerado. Na maioria dos projectos, este compromisso
+é favorável.
+
+### 6.1.3 Panorama dos frameworks principais {#sec-06-panorama}
+
+| Framework | Abordagem | Ponto forte | Caso de uso típico |
+|:----------|:----------|:------------|:------------------|
+| **Bootstrap** | Componentes | Curva baixa, comunidade enorme | Projectos académicos, prototipagem, portais |
+| **Tailwind CSS** | Utility-first | Controlo total, performance | Design systems, aplicações modernas |
+| **Foundation** | Componentes | Grid avançado, SASS nativo | Projectos enterprise |
+| **Bulma** | Componentes | CSS puro (sem JS), leve | Projectos ligeiros |
+| **Materialize** | Material Design | Animações incluídas, estética Google | Apps com look Android/Google |
+
+::: {.callout-note}
+#### Por que Bootstrap nesta UC?
+Bootstrap combina curva de aprendizagem baixa, documentação exemplar e
+presença massiva no mercado de trabalho. É o ponto de entrada mais eficaz
+para um primeiro contacto com frameworks. Os conceitos aprendidos —
+grelha, breakpoints, utilitários — transferem-se para qualquer outro
+framework.
+:::
+
+---
+
+## 6.2 Bootstrap — Instalação via CDN {#sec-06-cdn}
+
+### 6.2.1 O que é um CDN {#sec-06-cdn-def}
+
+Um **CDN** (*Content Delivery Network*) é uma rede distribuída de servidores
+que disponibiliza ficheiros estáticos (CSS, JavaScript, fontes) a partir do
+nó geograficamente mais próximo do utilizador. Usar o Bootstrap via CDN
+significa não descarregar nem hospedar os ficheiros — o browser carrega-os
+directamente dos servidores do Bootstrap.
+
+**Vantagens:**
+
+- Configuração imediata — sem instalação, sem npm, sem build step
+- O ficheiro pode estar em cache no browser do utilizador (se já visitou
+  outro site com o mesmo CDN)
+- Sempre actualizado para a versão especificada
+
+**Desvantagens:**
+
+- Dependência de conectividade — não funciona offline
+- Impossível personalizar (alterar variáveis SASS, etc.)
+- Produção: preferível servir os ficheiros do próprio servidor
+
+### 6.2.2 Estrutura mínima de uma página Bootstrap {#sec-06-estrutura-pagina}
+
+Uma página HTML com Bootstrap requer três elementos essenciais:
+
+```html
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+
+  <!-- 1. viewport meta — essencial para responsividade -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- 2. Bootstrap CSS — deve vir antes de qualquer CSS personalizado -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet">
+
+  <title>Página com Bootstrap</title>
+</head>
+<body>
+
+  <!-- conteúdo aqui -->
+  <div class="container">
+    <h1>Olá, Bootstrap!</h1>
+  </div>
+
+  <!-- 3. Bootstrap JS Bundle — no final do body, antes de </body> -->
+  <!-- inclui Popper.js para tooltips, dropdowns e modals -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+  </script>
+
+</body>
+</html>
+```
+
+::: {.callout-note}
+#### CSS antes do JS
+O CSS deve ser incluído no `<head>` para que o estilo seja aplicado antes
+de o conteúdo ser renderizado. O JS é colocado no final do `<body>` para
+não bloquear o carregamento da página. O `bootstrap.bundle.min.js` inclui
+já o Popper.js — não é necessário adicioná-lo separadamente.
+:::
+
+### 6.2.3 CSS personalizado sobre Bootstrap {#sec-06-css-proprio}
+
+Ao adicionar CSS personalizado, este deve ser incluído **depois** do CSS
+do Bootstrap para que as regras próprias possam sobrepor as do framework:
+
+```html
+<head>
+  <!-- 1. Bootstrap CSS -->
+  <link href="bootstrap.min.css" rel="stylesheet">
+
+  <!-- 2. CSS próprio — vem depois, tem precedência -->
+  <link href="styles.css" rel="stylesheet">
+</head>
+```
+
+---
+
+## 6.3 O Sistema de Grid Bootstrap {#sec-06-grid}
+
+### 6.3.1 Container, row e col {#sec-06-grid-crc}
+
+O grid Bootstrap assenta em três classes hierárquicas que espelham
+exactamente a grelha de 12 colunas estudada no capítulo anterior — a
+diferença é que o Bootstrap gere o clearfix, os gutters e a
+responsividade automaticamente.
+
+```html
+<div class="container">         <!-- centra e define largura máxima -->
+  <div class="row g-3">         <!-- linha de grelha; g-3 = gutter de 1rem -->
+    <div class="col-8">         <!-- ocupa 8 das 12 colunas -->
+      Conteúdo principal
+    </div>
+    <div class="col-4">         <!-- ocupa 4 das 12 colunas -->
+      Sidebar
+    </div>
+  </div>
+</div>
+```
+
+As colunas da mesma `row` devem somar 12. A classe `col` (sem número) distribui
+o espaço restante igualmente entre todos os `col` da linha.
+
+```{=html}
+<div class="browser-mockup">
+  <div class="browser-bar">Output — container, row, col</div>
+  <div class="browser-content p-3">
+    <style>
+      .demo-col { background: #0d6efd; color: #fff; border-radius: 4px;
+        padding: 12px 8px; text-align: center; font-size: 0.85rem;
+        font-family: monospace; margin-bottom: 2px; }
+      .demo-col-alt { background: #6ea8fe; }
+      .demo-row-lbl { font-size: 0.75rem; color: #666;
+        font-family: sans-serif; margin-bottom: 4px; }
+    </style>
+    <div class="container-fluid">
+      <div class="demo-row-lbl">row g-2 — col-8 + col-4</div>
+      <div class="row g-2 mb-3">
+        <div class="col-8"><div class="demo-col">col-8</div></div>
+        <div class="col-4"><div class="demo-col demo-col-alt">col-4</div></div>
+      </div>
+      <div class="demo-row-lbl">row g-2 — col-4 + col-4 + col-4</div>
+      <div class="row g-2 mb-3">
+        <div class="col-4"><div class="demo-col">col-4</div></div>
+        <div class="col-4"><div class="demo-col">col-4</div></div>
+        <div class="col-4"><div class="demo-col">col-4</div></div>
+      </div>
+      <div class="demo-row-lbl">row g-2 — col (distribuição igual automática)</div>
+      <div class="row g-2">
+        <div class="col"><div class="demo-col demo-col-alt">col</div></div>
+        <div class="col"><div class="demo-col demo-col-alt">col</div></div>
+        <div class="col"><div class="demo-col demo-col-alt">col</div></div>
+        <div class="col"><div class="demo-col demo-col-alt">col</div></div>
+        <div class="col"><div class="demo-col demo-col-alt">col</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+### 6.3.2 Os 6 breakpoints do Bootstrap {#sec-06-breakpoints}
+
+O Bootstrap define seis pontos de quebra, todos com `min-width` —
+confirmando que o Bootstrap é **mobile-first por definição**. Abaixo de
+576px não existe media query; o CSS base aplica-se a todos os tamanhos.
+
+| Nome | Prefixo | Condição | Container |
+|:----:|:-------:|:--------:|:---------:|
+| xs | *(nenhum)* | < 576px — sem query | 100% |
+| sm | `sm` | ≥ 576px | 540px |
+| md | `md` | ≥ 768px | 720px |
+| lg | `lg` | ≥ 992px | 960px |
+| xl | `xl` | ≥ 1200px | 1140px |
+| xxl | `xxl` | ≥ 1400px | 1320px |
+
+::: {.callout-note}
+#### Container ≠ Breakpoint
+O container é sempre mais estreito que o breakpoint — para `md` (≥ 768px),
+o container tem 720px. Os 48px restantes (24px de cada lado) formam as
+margens automáticas que centram o conteúdo. O `container-fluid` é a
+excepção: ocupa sempre 100% da largura.
+:::
+
+### 6.3.3 Classes responsivas — col-{bp}-{n} {#sec-06-responsivo}
+
+A responsividade Bootstrap é **declarativa**: especifica-se no HTML como
+cada coluna se comporta a cada breakpoint, sem escrever uma única media
+query:
+
+```html
+<!-- Uma coluna que se adapta automaticamente:
+     mobile (< 768px): linha completa
+     tablet (≥ 768px): meia largura
+     desktop (≥ 992px): um terço da largura -->
+
+<div class="row g-3">
+  <div class="col-12 col-md-6 col-lg-4">Card A</div>
+  <div class="col-12 col-md-6 col-lg-4">Card B</div>
+  <div class="col-12 col-md-6 col-lg-4">Card C</div>
+</div>
+```
+
+As classes aplicam-se de forma **cumulativa** — `col-md-6` aplica-se em md
+*e em todos os breakpoints maiores*, até ser sobreposta por `col-lg-4`.
+
+---
+
+## 6.4 Componentes Bootstrap {#sec-06-componentes}
+
+### 6.4.1 Navbar {#sec-06-navbar}
+
+A navbar Bootstrap é responsiva por natureza: colapsa em mobile (mostrando
+o botão hambúrguer) e expande a partir do breakpoint indicado em
+`navbar-expand-{bp}`.
+
+```html
+<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+  <div class="container">
+
+    <a class="navbar-brand" href="#">FAM</a>
+
+    <!-- Botão hambúrguer — visível abaixo de lg (< 992px) -->
+    <button class="navbar-toggler"
+            data-bs-toggle="collapse"
+            data-bs-target="#menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Área colapsável com os links -->
+    <div class="collapse navbar-collapse" id="menu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link active" href="#">Início</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Portfolio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contacto</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+```
+
+```{=html}
+<div class="browser-mockup">
+  <div class="browser-bar">Output — Navbar Bootstrap</div>
+  <div class="browser-content p-0">
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark px-3 py-2">
+      <a class="navbar-brand fw-bold" href="#">FAM</a>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="#">Início</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Portfolio</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Contacto</a></li>
+        </ul>
+      </div>
+    </nav>
+    <p class="text-muted" style="font-size:0.78rem;padding:6px 12px 4px;margin:0;">
+      ↑ Em mobile, os links ficam ocultos e aparece o botão hambúrguer ☰
+    </p>
+  </div>
+</div>
+```
+
+### 6.4.2 Cards {#sec-06-cards}
+
+O card é o componente de conteúdo mais versátil do Bootstrap — combina
+imagem, texto e acção num bloco visual consistente.
+
+```html
+<div class="card" style="width: 18rem;">
+  <img src="foto.jpg" class="card-img-top" alt="Imagem do projecto">
+  <div class="card-body">
+    <h5 class="card-title">Projecto Web</h5>
+    <p class="card-text">Descrição breve do projecto desenvolvido.</p>
+    <a href="#" class="btn btn-primary">Ver mais</a>
+  </div>
+  <div class="card-footer text-muted">
+    Actualizado há 2 dias
+  </div>
+</div>
+```
+
+```{=html}
+<div class="browser-mockup">
+  <div class="browser-bar">Output — Cards Bootstrap em grelha responsiva</div>
+  <div class="browser-content p-3">
+    <div class="row g-3">
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+          <div style="height:100px;background:linear-gradient(135deg,#0d6efd,#6ea8fe);
+            border-radius:4px 4px 0 0;display:flex;align-items:center;
+            justify-content:center;color:#fff;font-size:2rem;">🖥️</div>
+          <div class="card-body">
+            <h5 class="card-title">Projecto A</h5>
+            <p class="card-text text-muted" style="font-size:0.88rem;">
+              Página responsiva com Bootstrap e CSS personalizado.</p>
+            <a href="#" class="btn btn-primary btn-sm">Ver mais</a>
+          </div>
+          <div class="card-footer text-muted" style="font-size:0.8rem;">
+            Actualizado há 2 dias
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+          <div style="height:100px;background:linear-gradient(135deg,#198754,#75b798);
+            border-radius:4px 4px 0 0;display:flex;align-items:center;
+            justify-content:center;color:#fff;font-size:2rem;">📱</div>
+          <div class="card-body">
+            <h5 class="card-title">Projecto B</h5>
+            <p class="card-text text-muted" style="font-size:0.88rem;">
+              Interface mobile-first com Flexbox e Grid.</p>
+            <a href="#" class="btn btn-success btn-sm">Ver mais</a>
+          </div>
+          <div class="card-footer text-muted" style="font-size:0.8rem;">
+            Actualizado há 5 dias
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+          <div style="height:100px;background:linear-gradient(135deg,#dc3545,#f1959b);
+            border-radius:4px 4px 0 0;display:flex;align-items:center;
+            justify-content:center;color:#fff;font-size:2rem;">🎨</div>
+          <div class="card-body">
+            <h5 class="card-title">Projecto C</h5>
+            <p class="card-text text-muted" style="font-size:0.88rem;">
+              Design system com SASS e metodologia BEM.</p>
+            <a href="#" class="btn btn-danger btn-sm">Ver mais</a>
+          </div>
+          <div class="card-footer text-muted" style="font-size:0.8rem;">
+            Actualizado há 1 semana
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+### 6.4.3 Buttons {#sec-06-buttons}
+
+Os botões Bootstrap seguem o padrão `btn` + `btn-{variante}`, com variantes
+sólidas e de contorno (*outline*), e três tamanhos.
+
+```html
+<!-- Variantes sólidas -->
+<button class="btn btn-primary">Primary</button>
+<button class="btn btn-secondary">Secondary</button>
+<button class="btn btn-success">Success</button>
+<button class="btn btn-danger">Danger</button>
+<button class="btn btn-warning">Warning</button>
+
+<!-- Variantes outline -->
+<button class="btn btn-outline-primary">Outline Primary</button>
+
+<!-- Tamanhos -->
+<button class="btn btn-primary btn-lg">Grande</button>
+<button class="btn btn-primary">Normal</button>
+<button class="btn btn-primary btn-sm">Pequeno</button>
+
+<!-- Largura total -->
+<button class="btn btn-primary w-100">Bloco (100%)</button>
+```
+
+```{=html}
+<div class="browser-mockup">
+  <div class="browser-bar">Output — Buttons Bootstrap</div>
+  <div class="browser-content p-3">
+    <div class="d-flex flex-wrap gap-2 mb-3">
+      <button class="btn btn-primary">Primary</button>
+      <button class="btn btn-secondary">Secondary</button>
+      <button class="btn btn-success">Success</button>
+      <button class="btn btn-danger">Danger</button>
+      <button class="btn btn-warning">Warning</button>
+      <button class="btn btn-info">Info</button>
+    </div>
+    <div class="d-flex flex-wrap gap-2 mb-3">
+      <button class="btn btn-outline-primary">Outline Primary</button>
+      <button class="btn btn-outline-secondary">Outline Secondary</button>
+      <button class="btn btn-outline-danger">Outline Danger</button>
+    </div>
+    <div class="d-flex flex-wrap gap-2 align-items-center">
+      <button class="btn btn-primary btn-lg">Grande</button>
+      <button class="btn btn-primary">Normal</button>
+      <button class="btn btn-primary btn-sm">Pequeno</button>
+    </div>
+  </div>
+</div>
+```
+
+### 6.4.4 Forms {#sec-06-forms}
+
+```html
+<form>
+  <div class="mb-3">
+    <label for="email" class="form-label">Endereço de email</label>
+    <input type="email" class="form-control" id="email"
+           placeholder="nome@exemplo.pt">
+  </div>
+  <div class="mb-3">
+    <label for="msg" class="form-label">Mensagem</label>
+    <textarea class="form-control" id="msg" rows="3"></textarea>
+  </div>
+  <div class="mb-3 form-check">
+    <input type="checkbox" class="form-check-input" id="aceito">
+    <label class="form-check-label" for="aceito">Aceito os termos</label>
+  </div>
+  <button type="submit" class="btn btn-primary w-100">Enviar</button>
+</form>
+```
+
+```{=html}
+<div class="browser-mockup">
+  <div class="browser-bar">Output — Form Bootstrap</div>
+  <div class="browser-content p-3" style="max-width:480px;">
+    <form onsubmit="return false;">
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Endereço de email</label>
+        <input type="email" class="form-control" placeholder="nome@exemplo.pt">
+      </div>
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Mensagem</label>
+        <textarea class="form-control" rows="3" placeholder="Escreva aqui..."></textarea>
+      </div>
+      <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="demo-check">
+        <label class="form-check-label" for="demo-check">Aceito os termos</label>
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Enviar</button>
+    </form>
+  </div>
+</div>
+```
+
+---
+
+## 6.5 Utilitários Bootstrap {#sec-06-utilitarios}
+
+Os utilitários são classes atómicas que substituem CSS de uma linha —
+aplicadas directamente no HTML, sem escrever regras adicionais.
+
+### 6.5.1 Spacing — margin e padding {#sec-06-spacing}
+
+O padrão é `{tipo}{lado}-{escala}`, onde o tipo é `m` (margin) ou `p`
+(padding), o lado é opcional (`t`, `b`, `s`, `e`, `x`, `y`), e a escala
+vai de 0 a 5 (em múltiplos de `0.25rem`) ou `auto`.
+
+```html
+<div class="mt-3">   <!-- margin-top: 1rem -->
+<div class="mb-2">   <!-- margin-bottom: 0.5rem -->
+<div class="px-4">   <!-- padding horizontal: 1.5rem -->
+<div class="py-2">   <!-- padding vertical: 0.5rem -->
+<div class="m-0">    <!-- margin: 0 em todos os lados -->
+<div class="mx-auto"> <!-- margin horizontal: auto → centrado -->
+```
+
+| Escala | Valor rem | Valor px (base 16px) |
+|:------:|:---------:|:--------------------:|
+| 0 | 0 | 0 |
+| 1 | 0.25rem | 4px |
+| 2 | 0.5rem | 8px |
+| 3 | 1rem | 16px |
+| 4 | 1.5rem | 24px |
+| 5 | 3rem | 48px |
+
+### 6.5.2 Display, Flexbox e texto {#sec-06-utilitarios-outros}
+
+```html
+<!-- Display -->
+<div class="d-none">    <!-- display: none -->
+<div class="d-flex">    <!-- display: flex -->
+<div class="d-md-none"> <!-- none em ≥ md, visível abaixo -->
+
+<!-- Flexbox (quando d-flex está activo) -->
+<div class="d-flex justify-content-between align-items-center">
+<div class="d-flex gap-3 flex-wrap">
+
+<!-- Texto -->
+<p class="text-center">  <!-- text-align: center -->
+<p class="fw-bold">      <!-- font-weight: bold -->
+<p class="text-muted">   <!-- cor cinzento subtil -->
+<p class="fs-4">         <!-- font-size nível 4 (1.5rem) -->
+
+<!-- Cores de fundo e texto -->
+<div class="bg-primary text-white">
+<div class="bg-light text-dark">
+
+<!-- Dimensões -->
+<div class="w-100">      <!-- width: 100% -->
+<div class="h-100">      <!-- height: 100% -->
+```
+
+---
+
+## 6.6 Micro-interações em CSS Puro {#sec-06-micro}
+
+### 6.6.1 O Bootstrap já anima — mas como? {#sec-06-micro-bootstrap}
+
+Se inspeccionarmos o CSS do Bootstrap com as DevTools do browser
+(**F12 → Sources → bootstrap.min.css**), encontramos isto:
+
+```css
+/* Bootstrap internals — transition nos botões */
+.btn {
+  transition: color .15s ease-in-out,
+              background-color .15s ease-in-out,
+              border-color .15s ease-in-out,
+              box-shadow .15s ease-in-out;
+}
+
+/* Transição no collapse da navbar */
+.collapsing { transition: height .35s ease; }
+
+/* Fade nos modals */
+.fade { transition: opacity .15s linear; }
+```
+
+O efeito de hover dos botões, a abertura suave da navbar, o fade dos modals
+— nada disto é JavaScript. É CSS puro. O Bootstrap escreve as transições por
+nós; as secções seguintes ensinam a fazê-lo por conta própria, em qualquer
+contexto, com ou sem framework.
+
+### 6.6.2 transition {#sec-06-transition}
+
+A propriedade `transition` suaviza a mudança de qualquer propriedade CSS
+ao longo do tempo. A sintaxe é:
+
+```css
+transition: propriedade duração easing atraso;
+```
+
+```css
+/* Exemplo simples: mudar a cor de fundo em 0.3s */
+.btn {
+  background: #0d6efd;
+  transition: background-color 0.3s ease;
+}
+.btn:hover { background: #0a58ca; }
+
+/* Múltiplas propriedades */
+.card {
+  transform: translateY(0);
+  box-shadow: none;
+  transition: transform 0.2s ease,
+              box-shadow 0.2s ease;
+}
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 24px rgba(0,0,0,.15);
+}
+
+/* ⚠ Evitar: transition: all — anima tudo, impacto de performance */
+```
+
+```{=html}
+<div class="browser-mockup">
+  <div class="browser-bar">Output — transition: card levanta ao passar o rato</div>
+  <div class="browser-content p-4">
+    <style>
+      .demo-transition-card {
+        background: #fff;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 20px 24px;
+        width: 220px;
+        transform: translateY(0);
+        box-shadow: 0 2px 4px rgba(0,0,0,.06);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+        cursor: pointer;
+        font-family: sans-serif;
+      }
+      .demo-transition-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 28px rgba(0,0,0,.15);
+      }
+      .demo-transition-card h6 {
+        margin: 0 0 6px; font-size: 0.95rem; font-weight: 700;
+        color: #212529;
+      }
+      .demo-transition-card p {
+        margin: 0; font-size: 0.82rem; color: #6c757d;
+      }
+    </style>
+    <div class="d-flex gap-3 flex-wrap">
+      <div class="demo-transition-card">
+        <h6>Projecto A</h6>
+        <p>Passe o rato para ver a transição ↑</p>
+      </div>
+      <div class="demo-transition-card">
+        <h6>Projecto B</h6>
+        <p>translateY(-8px) + sombra suave</p>
+      </div>
+    </div>
+    <p class="text-muted mt-3" style="font-size:0.8rem;">
+      Interactivo — passe o rato sobre os cards
+    </p>
+  </div>
+</div>
+```
+
+Os quatro parâmetros de `transition`:
+
+| Parâmetro | Valores | Descrição |
+|:----------|:--------|:----------|
+| `propriedade` | `color`, `opacity`, `transform`, … | O que muda. Preferir propriedades específicas a `all`. |
+| `duração` | `0.3s`, `300ms` | Quanto tempo dura a transição. |
+| `easing` | `ease`, `linear`, `ease-in`, `ease-out`, `cubic-bezier()` | Curva de velocidade. |
+| `atraso` | `0s`, `0.1s` | Espera antes de começar. Opcional. |
+
+### 6.6.3 transform {#sec-06-transform}
+
+A propriedade `transform` modifica a aparência visual de um elemento —
+movendo-o, escalando-o ou rodando-o — **sem alterar o fluxo do documento**.
+Os elementos vizinhos não se deslocam. O browser usa aceleração GPU, o que
+torna as animações com `transform` mais eficientes do que animar `top` ou
+`left`.
+
+```css
+/* Mover */
+.el:hover { transform: translateY(-8px); }   /* desloca para cima 8px */
+.el:hover { transform: translateX(4px); }    /* desloca para a direita */
+.el:hover { transform: translate(-4px, -4px); } /* ambos os eixos */
+
+/* Escalar */
+.el:hover { transform: scale(1.05); }        /* 5% maior */
+.el:hover { transform: scale(0.95); }        /* 5% menor */
+
+/* Rodar */
+.arrow:hover { transform: rotate(90deg); }   /* sentido horário */
+.icon.open   { transform: rotate(45deg); }   /* ícone × a partir de + */
+
+/* Combinar — sempre numa única declaração */
+.card:hover {
+  transform: translateY(-4px) scale(1.02);   /* ✓ */
+}
+/* ✗ Errado: duas declarações transform sobrepoem-se */
+.card:hover { transform: translateY(-4px); }
+.card:hover { transform: scale(1.02); }      /* cancela a anterior */
+```
+
+```{=html}
+<div class="browser-mockup">
+  <div class="browser-bar">Output — transform: exemplos interactivos</div>
+  <div class="browser-content p-4">
+    <style>
+      .tf-grid { display: flex; gap: 16px; flex-wrap: wrap; }
+      .tf-box {
+        width: 110px; height: 80px; border-radius: 6px;
+        display: flex; flex-direction: column;
+        align-items: center; justify-content: center;
+        font-family: sans-serif; font-size: 0.78rem;
+        font-weight: 700; color: #fff; cursor: pointer;
+        transition: transform 0.25s ease;
+      }
+      .tf-box span { font-size: 1.3rem; margin-bottom: 4px; }
+      .tf-translate { background: #0d6efd; }
+      .tf-translate:hover { transform: translateY(-10px); }
+      .tf-scale    { background: #198754; }
+      .tf-scale:hover    { transform: scale(1.15); }
+      .tf-rotate   { background: #dc3545; }
+      .tf-rotate:hover   { transform: rotate(15deg); }
+      .tf-combine  { background: #6f42c1; }
+      .tf-combine:hover  { transform: translateY(-6px) scale(1.08); }
+    </style>
+    <div class="tf-grid">
+      <div class="tf-box tf-translate">
+        <span>↑</span>translateY(-10px)
+      </div>
+      <div class="tf-box tf-scale">
+        <span>⊕</span>scale(1.15)
+      </div>
+      <div class="tf-box tf-rotate">
+        <span>↻</span>rotate(15deg)
+      </div>
+      <div class="tf-box tf-combine">
+        <span>✦</span>translate + scale
+      </div>
+    </div>
+    <p class="text-muted mt-3" style="font-size:0.8rem;">
+      Interactivo — passe o rato sobre cada caixa
+    </p>
+  </div>
+</div>
+```
+
+### 6.6.4 Pseudo-classes como gatilhos {#sec-06-pseudo}
+
+As pseudo-classes definem **estados** de um elemento — são o mecanismo que
+activa as micro-interações sem JavaScript.
+
+```css
+.btn {
+  background: #0d6efd;
+  color: white;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+/* Estado: rato sobre o elemento */
+.btn:hover {
+  background: #0a58ca;
+  transform: translateY(-2px);
+}
+
+/* Estado: elemento pressionado */
+.btn:active {
+  transform: translateY(0);   /* "afunda" no clique */
+}
+
+/* Estado: elemento com foco (teclado ou clique) */
+.btn:focus {
+  outline: 3px solid rgba(13,110,253,.4);
+  outline-offset: 2px;
+}
+
+/* Estado: foco apenas por teclado (não por clique) */
+/* mais limpo que :focus para utilizadores de rato */
+.btn:focus-visible {
+  outline: 3px solid #0d6efd;
+  outline-offset: 2px;
+}
+```
+
+::: {.callout-note}
+#### :focus e acessibilidade
+Nunca remover o outline de foco sem fornecer uma alternativa visual.
+O outline é o único indicador de posição para utilizadores que navegam
+por teclado (pessoas com limitações motoras). O `:focus-visible` permite
+mostrar o outline apenas durante navegação por teclado, sem o mostrar
+a utilizadores de rato — o melhor dos dois mundos.
+:::
+
+```{=html}
+<div class="browser-mockup">
+  <div class="browser-bar">Output — pseudo-classes :hover, :active, :focus</div>
+  <div class="browser-content p-4">
+    <style>
+      .pseudo-btn {
+        display: inline-block; padding: 10px 22px;
+        background: #0d6efd; color: #fff; border: none;
+        border-radius: 6px; font-family: sans-serif;
+        font-size: 0.9rem; font-weight: 600; cursor: pointer;
+        transition: background 0.2s ease, transform 0.1s ease,
+                    box-shadow 0.2s ease;
+        margin-right: 10px; margin-bottom: 8px;
+      }
+      .pseudo-btn:hover {
+        background: #0a58ca;
+        transform: translateY(-3px);
+        box-shadow: 0 6px 16px rgba(13,110,253,.35);
+      }
+      .pseudo-btn:active {
+        transform: translateY(0);
+        box-shadow: none;
+        background: #084298;
+      }
+      .pseudo-btn:focus-visible {
+        outline: 3px solid #86b7fe;
+        outline-offset: 3px;
+      }
+      .pseudo-link {
+        font-family: sans-serif; font-size: 0.9rem;
+        color: #0d6efd; text-decoration: none;
+        border-bottom: 2px solid transparent;
+        transition: border-color 0.2s ease;
+      }
+      .pseudo-link:hover { border-bottom-color: #0d6efd; }
+    </style>
+    <button class="pseudo-btn">Hover + Active + Focus</button>
+    <button class="pseudo-btn" style="background:#198754;">
+      Outro botão
+    </button>
+    <br>
+    <a href="#" class="pseudo-link" onclick="return false;">
+      Link com sublinhado em hover
+    </a>
+    <p class="text-muted mt-2" style="font-size:0.8rem;">
+      Passe o rato · Clique · Navegue com Tab para ver :focus-visible
+    </p>
+  </div>
+</div>
+```
+
+### 6.6.5 @keyframes — animações autónomas {#sec-06-keyframes}
+
+Enquanto `transition` reage a uma mudança de estado (hover, focus), o
+`@keyframes` define uma sequência de estados que corre automaticamente,
+independentemente da interação do utilizador.
+
+A utilização é um processo em dois passos:
+
+**Passo 1 — Definir a animação** com `@keyframes`:
+
+```css
+/* Sintaxe with from/to */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  /* ponto intermédio opcional: */
+  /* 50% { opacity: 0.5; }      */
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Sintaxe com percentagens — permite múltiplos estados */
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.05); }
+}
+```
+
+**Passo 2 — Aplicar** com a propriedade `animation`:
+
+```css
+/* Shorthand: nome duração easing atraso iterações direção fill-mode */
+.hero    { animation: fadeInUp 0.6s ease-out; }
+.badge   { animation: pulse 2s ease-in-out infinite; }
+
+/* Propriedades individuais */
+.card {
+  animation-name:            fadeInUp;
+  animation-duration:        0.4s;
+  animation-timing-function: ease-out;
+  animation-delay:           0.1s;
+  animation-fill-mode:       forwards; /* mantém o estado final */
+}
+```
+
+::: {.callout-note}
+#### animation-fill-mode: forwards
+Por omissão, quando uma animação termina, o elemento volta ao estado
+inicial. `fill-mode: forwards` mantém o estado final da animação —
+essencial para efeitos de entrada como `fadeInUp`, onde queremos que
+o elemento permaneça visível depois de aparecer.
+:::
+
+```{=html}
+<div class="browser-mockup">
+  <div class="browser-bar">Output — @keyframes: clique para animar</div>
+  <div class="browser-content p-4">
+    <style>
+      @keyframes demo-fadeInUp {
+        from { opacity: 0; transform: translateY(24px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+      @keyframes demo-pulse {
+        0%, 100% { transform: scale(1); }
+        50%       { transform: scale(1.12); }
+      }
+      @keyframes demo-spin {
+        from { transform: rotate(0deg); }
+        to   { transform: rotate(360deg); }
+      }
+      .kf-grid { display: flex; gap: 16px; flex-wrap: wrap; }
+      .kf-box {
+        width: 130px; height: 90px; border-radius: 8px;
+        display: flex; flex-direction: column;
+        align-items: center; justify-content: center;
+        font-family: sans-serif; font-size: 0.78rem;
+        font-weight: 700; cursor: pointer; border: 2px solid transparent;
+      }
+      .kf-box span { font-size: 1.5rem; margin-bottom: 6px; }
+      .kf-fade   { background: #e8f0ff; color: #0d6efd; border-color: #b6d1ff; }
+      .kf-pulse  { background: #e8fff0; color: #198754; border-color: #b6f0c9; }
+      .kf-spin   { background: #fff3e0; color: #e65c00; border-color: #ffd59e; }
+      .playing-fade  { animation: demo-fadeInUp 0.6s ease-out forwards; }
+      .playing-pulse { animation: demo-pulse 1s ease-in-out 3; }
+      .playing-spin  { animation: demo-spin 1s linear 2; }
+    </style>
+    <div class="kf-grid">
+      <div class="kf-box kf-fade" id="kf1"
+           onclick="triggerAnim('kf1','playing-fade')">
+        <span>✨</span>fadeInUp
+      </div>
+      <div class="kf-box kf-pulse" id="kf2"
+           onclick="triggerAnim('kf2','playing-pulse')">
+        <span>💓</span>pulse × 3
+      </div>
+      <div class="kf-box kf-spin" id="kf3"
+           onclick="triggerAnim('kf3','playing-spin')">
+        <span>⚙️</span>spin × 2
+      </div>
+    </div>
+    <p class="text-muted mt-3" style="font-size:0.8rem;">
+      Clique em cada caixa para ver a animação
+    </p>
+    <script>
+      function triggerAnim(id, cls) {
+        const el = document.getElementById(id);
+        el.classList.remove(cls);
+        void el.offsetWidth; /* force reflow */
+        el.classList.add(cls);
+        el.addEventListener('animationend', () => el.classList.remove(cls),
+          { once: true });
+      }
+    </script>
+  </div>
+</div>
+```
+
+### 6.6.6 Boas práticas e acessibilidade {#sec-06-boas-praticas}
+
+```css
+/* ✓ Especificar propriedades — não usar transition: all */
+.btn { transition: background-color 0.2s ease, transform 0.1s ease; }
+
+/* ✓ Preferir transform e opacity — aceleração GPU, sem reflow */
+/* ✗ Evitar animar top, left, width, height — causam reflow */
+
+/* ✓ Respeitar prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration:   0.01ms !important;
+    transition-duration:  0.01ms !important;
+  }
+}
+
+/* ✓ Nunca remover :focus sem alternativa visível */
+/* ✗ .btn:focus { outline: none; }  — inacessível */
+/* ✓ .btn:focus-visible { outline: 3px solid #86b7fe; } */
+
+/* ✓ Animar com propósito — cada micro-interação deve comunicar algo:
+      hover → "isto é clicável"
+      active → "o clique foi registado"
+      fadeInUp → "novo conteúdo chegou"      */
+```
+
+---
+
+## Síntese do Capítulo {#sec-06-sintese}
+
+Os **frameworks CSS** resolvem o problema da consistência e da
+responsividade a escala. O Bootstrap é o mais adoptado: inclui via CDN,
+usa classes no HTML, e encapsula as media queries, o grid e os componentes
+mais comuns.
+
+O **grid Bootstrap** é o sistema de 12 colunas do capítulo anterior,
+automatizado e responsivo. Os seis breakpoints (`xs` a `xxl`) usam todos
+`min-width` — o Bootstrap é mobile-first por definição. As classes
+`col-{bp}-{n}` aplicam-se a partir do breakpoint indicado e são cumulativas.
+
+Os **componentes** (navbar, cards, buttons, forms) e os **utilitários**
+(spacing, display, flex, texto, cores) eliminam CSS repetitivo. A regra
+de ouro é incluir o CSS próprio **depois** do Bootstrap para poder
+sobrepor estilos.
+
+As **micro-interações** — `transition`, `transform`, pseudo-classes e
+`@keyframes` — são CSS puro, independentes do Bootstrap. O Bootstrap
+usa-as internamente; aprendê-las em CSS nativo significa usá-las em
+qualquer projecto. `transform` e `opacity` são as propriedades a animar:
+usam GPU, não causam reflow, e produzem transições fluidas. Respeitar
+`prefers-reduced-motion` e nunca remover `:focus` sem alternativa
+são requisitos de acessibilidade, não opções.
+
+---
+
+## Exercícios {#sec-06-exercicios}
+
+::: {.callout-caution}
+#### Exercício 6.1 — Incluir Bootstrap e estrutura base
+Crie uma página HTML mínima que:
+
+a) Inclua Bootstrap 5.3 via CDN (CSS no `<head>`, JS no final do `<body>`).
+b) Tenha o `<meta name="viewport">` correcto.
+c) Mostre o texto "Olá, Bootstrap!" centrado horizontalmente com a classe
+   `text-center`, dentro de um `container`.
+
+Verifique que a página funciona offline sem a CDN e observe o que muda.
+:::
+
+::: {.callout-caution}
+#### Exercício 6.2 — Grid responsivo
+Construa uma grelha Bootstrap com:
+
+a) Três cards por linha em desktop (≥ 992px).
+b) Dois cards por linha em tablet (≥ 768px e < 992px).
+c) Um card por linha em mobile (< 768px).
+
+Cada card deve ter título, parágrafo e um botão. Use `h-100` para garantir
+que os cards da mesma linha ficam com a mesma altura. Use `g-3` para
+espaçamento entre cards.
+:::
+
+::: {.callout-caution}
+#### Exercício 6.3 — Navbar responsiva
+Implemente uma navbar Bootstrap que:
+
+a) Mostre o nome do site (`navbar-brand`) à esquerda.
+b) Tenha quatro links de navegação à direita (`ms-auto`).
+c) Colapse em mobile (abaixo de 992px) com o botão hambúrguer.
+d) Use fundo escuro (`bg-dark navbar-dark`).
+
+Teste o comportamento no browser redimensionando a janela.
+:::
+
+::: {.callout-caution}
+#### Exercício 6.4 — transition e :hover
+Crie um card com:
+
+a) Transição de `transform` de 0.25s quando o rato passa por cima.
+b) O card sobe 8px (`translateY(-8px)`) no hover.
+c) Uma sombra suave (`box-shadow`) que aparece suavemente no hover.
+d) O elemento deve ter `transition` definido no estado base, não no `:hover`.
+
+Explique por que razão a `transition` deve ser definida no estado base e
+não no `:hover`.
+:::
+
+::: {.callout-caution}
+#### Exercício 6.5 — @keyframes
+Crie uma animação `slideInLeft` que:
+
+a) Começa com `opacity: 0` e `transform: translateX(-30px)`.
+b) Termina com `opacity: 1` e `transform: translateX(0)`.
+c) Dura 0.5s com easing `ease-out`.
+d) Aplica-se a um elemento `.hero` que aparece quando a página carrega.
+e) Adicione a regra `prefers-reduced-motion` correspondente.
+:::
