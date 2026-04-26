@@ -270,24 +270,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="hero">
   <div class="hero-badge">UTAD · 2025/2026</div>
   <h1>Ferramentas e Aplicações Multimédia</h1>
-  <h2 class="anchored" data-anchor-id="prefácio">Sebenta da Unidade Curricular</h2>
-  <p>Licenciatura em Comunicação e Multimédia &nbsp;·&nbsp; 1.º Ano / 2.º Semestre<br>
-     Universidade de Trás-os-Montes e Alto Douro</p>
+  <h2 class="anchored" data-anchor-id="prefácio">Sebenta de estudo</h2>
+  <p>Universidade de Trás-os-Montes e Alto Douro</p>
 </div>
-<p>Esta sebenta acompanha a unidade curricular de <strong>Ferramentas e Aplicações Multimédia</strong> do 1.º ano / 2.º semestre da Licenciatura em Comunicação e Multimédia da Universidade de Trás-os-Montes e Alto Douro.</p>
+<p>Esta sebenta é um documento de estudo autónomo para a disciplina de <strong>Ferramentas e Aplicações Multimédia</strong>, cobrindo os principais temas de HTML/CSS, SASS, organização de projectos e desenvolvimento <em>web</em> moderno.</p>
 <section id="organização-da-sebenta" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="organização-da-sebenta">Organização da sebenta</h2>
-<p>A sebenta está organizada em capítulos correspondentes às aulas leccionadas, cobrindo os quatro blocos temáticos da UC:</p>
+<p>A sebenta está organizada em quatro blocos temáticos:</p>
 <ol type="1">
 <li><strong>Fundamentos do Digital</strong> — multimédia, codificação, sistemas numéricos, digitalização e compressão</li>
-<li><strong>CSS e Arquitectura Visual</strong> — layout, responsividade, metodologia BEM</li>
-<li><strong>SASS e Organização Profissional</strong> — pré-processamento CSS, estrutura de projecto</li>
+<li><strong>CSS e Arquitectura Visual</strong> — layout, responsividade e folhas de estilo</li>
+<li><strong>SASS e Organização Profissional</strong> — pré-processamento CSS, estrutura de projecto, nomenclatura BEM</li>
 <li><strong>Desenvolvimento SPA</strong> — Angular, componentes, rotas, gestão de estado</li>
 </ol>
 </section>
 <section id="como-usar-esta-sebenta" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="como-usar-esta-sebenta">Como usar esta sebenta</h2>
-<p>Os exemplos de código ao longo do texto são funcionais e podem ser executados directamente no browser. Os exercícios no final de cada capítulo destinam-se à consolidação autónoma dos conceitos apresentados.</p>
+<p>Os exemplos de código ao longo do texto são funcionais e podem ser executados directamente no <em>browser</em>. Os exercícios no final de cada capítulo destinam-se à consolidação autónoma dos conceitos apresentados.</p>
 </section>
 <section id="autores" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="autores">Autores</h2>
@@ -928,38 +927,37 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;div class="hero"&gt;</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="in">  &lt;div class="hero-badge"&gt;UTAD · 2025/2026&lt;/div&gt;</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="in">  &lt;h1&gt;Ferramentas e Aplicações Multimédia&lt;/h1&gt;</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="in">  &lt;h2&gt;Sebenta da Unidade Curricular&lt;/h2&gt;</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="in">  &lt;p&gt;Licenciatura em Comunicação e Multimédia &amp;nbsp;·&amp;nbsp; 1.º Ano / 2.º Semestre&lt;br&gt;</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="in">     Universidade de Trás-os-Montes e Alto Douro&lt;/p&gt;</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/div&gt;</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>Esta sebenta acompanha a unidade curricular de **Ferramentas e Aplicações Multimédia**</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>do 1.º ano / 2.º semestre da Licenciatura em Comunicação e Multimédia da</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>Universidade de Trás-os-Montes e Alto Douro.</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">## Organização da sebenta {.unnumbered}</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>A sebenta está organizada em capítulos correspondentes às aulas leccionadas,</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>cobrindo os quatro blocos temáticos da UC:</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**Fundamentos do Digital** — multimédia, codificação, sistemas numéricos,</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>   digitalização e compressão</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**CSS e Arquitectura Visual** — layout, responsividade, metodologia BEM</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**SASS e Organização Profissional** — pré-processamento CSS, estrutura de projecto</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>**Desenvolvimento SPA** — Angular, componentes, rotas, gestão de estado</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="fu">## Como usar esta sebenta {.unnumbered}</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>Os exemplos de código ao longo do texto são funcionais e podem ser executados</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>directamente no browser. Os exercícios no final de cada capítulo destinam-se</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>à consolidação autónoma dos conceitos apresentados.</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="fu">## Autores {.unnumbered}</span></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>**João Pavão** — UTAD</span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>**Sérgio Madeira** — UTAD</span></code><button title="Copiar para a área de transferência" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="in">  &lt;h2&gt;Sebenta de estudo&lt;/h2&gt;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="in">  &lt;p&gt;Universidade de Trás-os-Montes e Alto Douro&lt;/p&gt;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/div&gt;</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>Esta sebenta é um documento de estudo autónomo para a disciplina de</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>**Ferramentas e Aplicações Multimédia**, cobrindo os principais temas</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>de HTML/CSS, SASS, organização de projectos e desenvolvimento *web* moderno.</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">## Organização da sebenta {.unnumbered}</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>A sebenta está organizada em quatro blocos temáticos:</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**Fundamentos do Digital** — multimédia, codificação, sistemas numéricos,</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>   digitalização e compressão</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**CSS e Arquitectura Visual** — layout, responsividade e folhas de estilo</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**SASS e Organização Profissional** — pré-processamento CSS, estrutura de</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>   projecto, nomenclatura BEM</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>**Desenvolvimento SPA** — Angular, componentes, rotas, gestão de estado</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="fu">## Como usar esta sebenta {.unnumbered}</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>Os exemplos de código ao longo do texto são funcionais e podem ser executados</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>directamente no *browser*. Os exercícios no final de cada capítulo destinam-se</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>à consolidação autónoma dos conceitos apresentados.</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="fu">## Autores {.unnumbered}</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>**João Pavão** — UTAD</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>**Sérgio Madeira** — UTAD</span></code><button title="Copiar para a área de transferência" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">

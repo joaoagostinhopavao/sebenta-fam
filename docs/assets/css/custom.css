@@ -85,7 +85,37 @@ pre.sourceCode {
   border-radius: 4px;
 }
 
-/* Callouts de exercícios */
+/* ============================================================
+   Cabeçalho de capítulo — banner colorido
+   ============================================================ */
+#title-block-header.quarto-title-block {
+  background: linear-gradient(120deg, #0a2342 0%, #0055a4 100%);
+  padding: 2rem 2.5rem 1.75rem;
+  margin: -1rem -1rem 2.5rem;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.18);
+}
+
+#title-block-header.quarto-title-block h1.title {
+  color: #fff !important;
+  border: none !important;
+  font-size: 1.85rem;
+  margin: 0;
+  line-height: 1.25;
+}
+
+#title-block-header.quarto-title-block h1.title .chapter-number {
+  opacity: 0.65;
+  font-weight: 300;
+}
+
+/* Ocultar autor/data nos capítulos — redundante com os metadados do livro */
+#title-block-header.quarto-title-block .quarto-title-meta {
+  display: none;
+}
+
+/* ============================================================
+   Callouts de exercícios */
 .callout-caution {
   border-left-color: #e67e22;
 }
