@@ -219,6 +219,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Frameworks CSS, Bootstrap e Micro-interações</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/cap07.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">SASS Fundamental</span></span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -245,7 +251,7 @@ window.Quarto = {
   <li><a href="#sec-04-retina" id="toc-sec-04-retina" class="nav-link" data-scroll-target="#sec-04-retina"><span class="header-section-number">4.3.2</span> 4.2.2 Anatomia da retina e fotorreceptores</a></li>
   <li><a href="#sec-04-cones-sml" id="toc-sec-04-cones-sml" class="nav-link" data-scroll-target="#sec-04-cones-sml"><span class="header-section-number">4.3.3</span> 4.2.3 Sensibilidade espectral dos cones S, M, L</a></li>
   <li><a href="#sec-04-absorcao" id="toc-sec-04-absorcao" class="nav-link" data-scroll-target="#sec-04-absorcao"><span class="header-section-number">4.3.4</span> 4.2.4 Absorção relativa e construção da percepção cromática</a></li>
-  <li><a href="#sec-04-sintese" id="toc-sec-04-sintese" class="nav-link" data-scroll-target="#sec-04-sintese"><span class="header-section-number">4.3.5</span> 4.2.5 Síntese aditiva e síntese subtrativa</a></li>
+  <li><a href="#sec-04-sintese-cromatica" id="toc-sec-04-sintese-cromatica" class="nav-link" data-scroll-target="#sec-04-sintese-cromatica"><span class="header-section-number">4.3.5</span> 4.2.5 Síntese aditiva e síntese subtrativa</a></li>
   </ul></li>
   <li><a href="#sec-04-modelos-cor" id="toc-sec-04-modelos-cor" class="nav-link" data-scroll-target="#sec-04-modelos-cor"><span class="header-section-number">4.4</span> 4.3 Modelos de Cor</a>
   <ul class="collapse">
@@ -573,8 +579,8 @@ Terminologia
 <p>A resposta de cada tipo de cone a uma determinada luz pode exprimir-se como percentagem de energia absorvida. Tome-se o exemplo da cor cian a 500 nm: o cone B (S) absorve 35% da energia, o cone G (M) absorve 15% e o cone R (L) apenas 2%. É a combinação destas três respostas que o cérebro interpreta como a cor cian — não um comprimento de onda isolado, mas um padrão de activação dos três canais.</p>
 <p>Esta propriedade tem uma consequência fundamental para a tecnologia: é possível provocar qualquer percepção cromática misturando apenas três luzes (vermelha, verde e azul), desde que as suas intensidades relativas produzam o mesmo padrão de activação dos cones que a cor pretendida. É exactamente este princípio que os monitores de computador exploram.</p>
 </section>
-<section id="sec-04-sintese" class="level3" data-number="4.3.5">
-<h3 data-number="4.3.5" class="anchored" data-anchor-id="sec-04-sintese"><span class="header-section-number">4.3.5</span> 4.2.5 Síntese aditiva e síntese subtrativa</h3>
+<section id="sec-04-sintese-cromatica" class="level3" data-number="4.3.5">
+<h3 data-number="4.3.5" class="anchored" data-anchor-id="sec-04-sintese-cromatica"><span class="header-section-number">4.3.5</span> 4.2.5 Síntese aditiva e síntese subtrativa</h3>
 <p>A composição de cores pode seguir dois princípios opostos, consoante o suporte físico:</p>
 <p><strong>Síntese aditiva</strong> — aplica-se à luz emitida. Quando se combinam feixes de luz de diferentes cores, as suas energias somam-se: vermelho + verde + azul (R + G + B) produz branco; a ausência de luz produz preto. É o princípio dos ecrãs, monitores e projectores.</p>
 <p><strong>Síntese subtrativa</strong> — aplica-se a pigmentos e tintas. Um pigmento absorve determinados comprimentos de onda e reflecte os restantes. A combinação de cian (C), magenta (M) e amarelo (Y) absorve toda a luz visível, produzindo preto (teórico); a ausência de pigmento — o papel em branco — reflecte toda a luz. É o princípio da impressão.</p>
@@ -2104,7 +2110,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb6-329"><a href="#cb6-329" aria-hidden="true" tabindex="-1"></a>de activação dos cones que a cor pretendida. É exactamente este princípio que</span>
 <span id="cb6-330"><a href="#cb6-330" aria-hidden="true" tabindex="-1"></a>os monitores de computador exploram.</span>
 <span id="cb6-331"><a href="#cb6-331" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-332"><a href="#cb6-332" aria-hidden="true" tabindex="-1"></a><span class="fu">### 4.2.5 Síntese aditiva e síntese subtrativa {#sec-04-sintese}</span></span>
+<span id="cb6-332"><a href="#cb6-332" aria-hidden="true" tabindex="-1"></a><span class="fu">### 4.2.5 Síntese aditiva e síntese subtrativa {#sec-04-sintese-cromatica}</span></span>
 <span id="cb6-333"><a href="#cb6-333" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-334"><a href="#cb6-334" aria-hidden="true" tabindex="-1"></a>A composição de cores pode seguir dois princípios opostos, consoante o suporte</span>
 <span id="cb6-335"><a href="#cb6-335" aria-hidden="true" tabindex="-1"></a>físico:</span>

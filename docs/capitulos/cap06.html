@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../capitulos/cap07.html" rel="next">
 <link href="../capitulos/cap05.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -189,6 +190,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Frameworks CSS, Bootstrap e Micro-interações</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/cap07.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">SASS Fundamental</span></span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -199,48 +206,48 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Índice</h2>
    
   <ul>
-  <li><a href="#sec-06-intro" id="toc-sec-06-intro" class="nav-link active" data-scroll-target="#sec-06-intro"><span class="header-section-number">6.1</span> Introdução</a></li>
-  <li><a href="#sec-06-problema" id="toc-sec-06-problema" class="nav-link" data-scroll-target="#sec-06-problema"><span class="header-section-number">6.2</span> 6.1 O Problema que os Frameworks Resolvem</a>
+  <li><a href="#sec-06-intro" id="toc-sec-06-intro" class="nav-link active" data-scroll-target="#sec-06-intro">Introdução</a></li>
+  <li><a href="#sec-06-problema" id="toc-sec-06-problema" class="nav-link" data-scroll-target="#sec-06-problema"><span class="header-section-number">6.1</span> O Problema que os Frameworks Resolvem</a>
   <ul class="collapse">
-  <li><a href="#sec-06-problema-escala" id="toc-sec-06-problema-escala" class="nav-link" data-scroll-target="#sec-06-problema-escala"><span class="header-section-number">6.2.1</span> 6.1.1 CSS manual a escala</a></li>
-  <li><a href="#sec-06-o-que-e" id="toc-sec-06-o-que-e" class="nav-link" data-scroll-target="#sec-06-o-que-e"><span class="header-section-number">6.2.2</span> 6.1.2 O que é um framework CSS</a></li>
-  <li><a href="#sec-06-panorama" id="toc-sec-06-panorama" class="nav-link" data-scroll-target="#sec-06-panorama"><span class="header-section-number">6.2.3</span> 6.1.3 Panorama dos frameworks principais</a></li>
+  <li><a href="#sec-06-problema-escala" id="toc-sec-06-problema-escala" class="nav-link" data-scroll-target="#sec-06-problema-escala"><span class="header-section-number">6.1.1</span> CSS manual a escala</a></li>
+  <li><a href="#sec-06-o-que-e" id="toc-sec-06-o-que-e" class="nav-link" data-scroll-target="#sec-06-o-que-e"><span class="header-section-number">6.1.2</span> O que é um framework CSS</a></li>
+  <li><a href="#sec-06-panorama" id="toc-sec-06-panorama" class="nav-link" data-scroll-target="#sec-06-panorama"><span class="header-section-number">6.1.3</span> Panorama dos frameworks principais</a></li>
   </ul></li>
-  <li><a href="#sec-06-cdn" id="toc-sec-06-cdn" class="nav-link" data-scroll-target="#sec-06-cdn"><span class="header-section-number">6.3</span> 6.2 Bootstrap — Instalação via CDN</a>
+  <li><a href="#sec-06-cdn" id="toc-sec-06-cdn" class="nav-link" data-scroll-target="#sec-06-cdn"><span class="header-section-number">6.2</span> Bootstrap — Instalação via CDN</a>
   <ul class="collapse">
-  <li><a href="#sec-06-cdn-def" id="toc-sec-06-cdn-def" class="nav-link" data-scroll-target="#sec-06-cdn-def"><span class="header-section-number">6.3.1</span> 6.2.1 O que é um CDN</a></li>
-  <li><a href="#sec-06-estrutura-pagina" id="toc-sec-06-estrutura-pagina" class="nav-link" data-scroll-target="#sec-06-estrutura-pagina"><span class="header-section-number">6.3.2</span> 6.2.2 Estrutura mínima de uma página Bootstrap</a></li>
-  <li><a href="#sec-06-css-proprio" id="toc-sec-06-css-proprio" class="nav-link" data-scroll-target="#sec-06-css-proprio"><span class="header-section-number">6.3.3</span> 6.2.3 CSS personalizado sobre Bootstrap</a></li>
+  <li><a href="#sec-06-cdn-def" id="toc-sec-06-cdn-def" class="nav-link" data-scroll-target="#sec-06-cdn-def"><span class="header-section-number">6.2.1</span> O que é um CDN</a></li>
+  <li><a href="#sec-06-estrutura-pagina" id="toc-sec-06-estrutura-pagina" class="nav-link" data-scroll-target="#sec-06-estrutura-pagina"><span class="header-section-number">6.2.2</span> Estrutura mínima de uma página Bootstrap</a></li>
+  <li><a href="#sec-06-css-proprio" id="toc-sec-06-css-proprio" class="nav-link" data-scroll-target="#sec-06-css-proprio"><span class="header-section-number">6.2.3</span> CSS personalizado sobre Bootstrap</a></li>
   </ul></li>
-  <li><a href="#sec-06-grid" id="toc-sec-06-grid" class="nav-link" data-scroll-target="#sec-06-grid"><span class="header-section-number">6.4</span> 6.3 O Sistema de Grid Bootstrap</a>
+  <li><a href="#sec-06-grid" id="toc-sec-06-grid" class="nav-link" data-scroll-target="#sec-06-grid"><span class="header-section-number">6.3</span> O Sistema de Grid Bootstrap</a>
   <ul class="collapse">
-  <li><a href="#sec-06-grid-crc" id="toc-sec-06-grid-crc" class="nav-link" data-scroll-target="#sec-06-grid-crc"><span class="header-section-number">6.4.1</span> 6.3.1 Container, row e col</a></li>
-  <li><a href="#sec-06-breakpoints" id="toc-sec-06-breakpoints" class="nav-link" data-scroll-target="#sec-06-breakpoints"><span class="header-section-number">6.4.2</span> 6.3.2 Os 6 breakpoints do Bootstrap</a></li>
-  <li><a href="#sec-06-responsivo" id="toc-sec-06-responsivo" class="nav-link" data-scroll-target="#sec-06-responsivo"><span class="header-section-number">6.4.3</span> 6.3.3 Classes responsivas — col-{bp}-{n}</a></li>
+  <li><a href="#sec-06-grid-crc" id="toc-sec-06-grid-crc" class="nav-link" data-scroll-target="#sec-06-grid-crc"><span class="header-section-number">6.3.1</span> Container, row e col</a></li>
+  <li><a href="#sec-06-breakpoints" id="toc-sec-06-breakpoints" class="nav-link" data-scroll-target="#sec-06-breakpoints"><span class="header-section-number">6.3.2</span> Os 6 breakpoints do Bootstrap</a></li>
+  <li><a href="#sec-06-responsivo" id="toc-sec-06-responsivo" class="nav-link" data-scroll-target="#sec-06-responsivo"><span class="header-section-number">6.3.3</span> Classes responsivas — col-{bp}-{n}</a></li>
   </ul></li>
-  <li><a href="#sec-06-componentes" id="toc-sec-06-componentes" class="nav-link" data-scroll-target="#sec-06-componentes"><span class="header-section-number">6.5</span> 6.4 Componentes Bootstrap</a>
+  <li><a href="#sec-06-componentes" id="toc-sec-06-componentes" class="nav-link" data-scroll-target="#sec-06-componentes"><span class="header-section-number">6.4</span> Componentes Bootstrap</a>
   <ul class="collapse">
-  <li><a href="#sec-06-navbar" id="toc-sec-06-navbar" class="nav-link" data-scroll-target="#sec-06-navbar"><span class="header-section-number">6.5.1</span> 6.4.1 Navbar</a></li>
-  <li><a href="#sec-06-cards" id="toc-sec-06-cards" class="nav-link" data-scroll-target="#sec-06-cards"><span class="header-section-number">6.5.2</span> 6.4.2 Cards</a></li>
-  <li><a href="#sec-06-buttons" id="toc-sec-06-buttons" class="nav-link" data-scroll-target="#sec-06-buttons"><span class="header-section-number">6.5.3</span> 6.4.3 Buttons</a></li>
-  <li><a href="#sec-06-forms" id="toc-sec-06-forms" class="nav-link" data-scroll-target="#sec-06-forms"><span class="header-section-number">6.5.4</span> 6.4.4 Forms</a></li>
+  <li><a href="#sec-06-navbar" id="toc-sec-06-navbar" class="nav-link" data-scroll-target="#sec-06-navbar"><span class="header-section-number">6.4.1</span> Navbar</a></li>
+  <li><a href="#sec-06-cards" id="toc-sec-06-cards" class="nav-link" data-scroll-target="#sec-06-cards"><span class="header-section-number">6.4.2</span> Cards</a></li>
+  <li><a href="#sec-06-buttons" id="toc-sec-06-buttons" class="nav-link" data-scroll-target="#sec-06-buttons"><span class="header-section-number">6.4.3</span> Buttons</a></li>
+  <li><a href="#sec-06-forms" id="toc-sec-06-forms" class="nav-link" data-scroll-target="#sec-06-forms"><span class="header-section-number">6.4.4</span> Forms</a></li>
   </ul></li>
-  <li><a href="#sec-06-utilitarios" id="toc-sec-06-utilitarios" class="nav-link" data-scroll-target="#sec-06-utilitarios"><span class="header-section-number">6.6</span> 6.5 Utilitários Bootstrap</a>
+  <li><a href="#sec-06-utilitarios" id="toc-sec-06-utilitarios" class="nav-link" data-scroll-target="#sec-06-utilitarios"><span class="header-section-number">6.5</span> Utilitários Bootstrap</a>
   <ul class="collapse">
-  <li><a href="#sec-06-spacing" id="toc-sec-06-spacing" class="nav-link" data-scroll-target="#sec-06-spacing"><span class="header-section-number">6.6.1</span> 6.5.1 Spacing — margin e padding</a></li>
-  <li><a href="#sec-06-utilitarios-outros" id="toc-sec-06-utilitarios-outros" class="nav-link" data-scroll-target="#sec-06-utilitarios-outros"><span class="header-section-number">6.6.2</span> 6.5.2 Display, Flexbox e texto</a></li>
+  <li><a href="#sec-06-spacing" id="toc-sec-06-spacing" class="nav-link" data-scroll-target="#sec-06-spacing"><span class="header-section-number">6.5.1</span> Spacing — margin e padding</a></li>
+  <li><a href="#sec-06-utilitarios-outros" id="toc-sec-06-utilitarios-outros" class="nav-link" data-scroll-target="#sec-06-utilitarios-outros"><span class="header-section-number">6.5.2</span> Display, Flexbox e texto</a></li>
   </ul></li>
-  <li><a href="#sec-06-micro" id="toc-sec-06-micro" class="nav-link" data-scroll-target="#sec-06-micro"><span class="header-section-number">6.7</span> 6.6 Micro-interações em CSS Puro</a>
+  <li><a href="#sec-06-micro" id="toc-sec-06-micro" class="nav-link" data-scroll-target="#sec-06-micro"><span class="header-section-number">6.6</span> Micro-interações em CSS Puro</a>
   <ul class="collapse">
-  <li><a href="#sec-06-micro-bootstrap" id="toc-sec-06-micro-bootstrap" class="nav-link" data-scroll-target="#sec-06-micro-bootstrap"><span class="header-section-number">6.7.1</span> 6.6.1 O Bootstrap já anima — mas como?</a></li>
-  <li><a href="#sec-06-transition" id="toc-sec-06-transition" class="nav-link" data-scroll-target="#sec-06-transition"><span class="header-section-number">6.7.2</span> 6.6.2 transition</a></li>
-  <li><a href="#sec-06-transform" id="toc-sec-06-transform" class="nav-link" data-scroll-target="#sec-06-transform"><span class="header-section-number">6.7.3</span> 6.6.3 transform</a></li>
-  <li><a href="#sec-06-pseudo" id="toc-sec-06-pseudo" class="nav-link" data-scroll-target="#sec-06-pseudo"><span class="header-section-number">6.7.4</span> 6.6.4 Pseudo-classes como gatilhos</a></li>
-  <li><a href="#sec-06-keyframes" id="toc-sec-06-keyframes" class="nav-link" data-scroll-target="#sec-06-keyframes"><span class="header-section-number">6.7.5</span> 6.6.5 <span class="citation" data-cites="keyframes">@keyframes</span> — animações autónomas</a></li>
-  <li><a href="#sec-06-boas-praticas" id="toc-sec-06-boas-praticas" class="nav-link" data-scroll-target="#sec-06-boas-praticas"><span class="header-section-number">6.7.6</span> 6.6.6 Boas práticas e acessibilidade</a></li>
+  <li><a href="#sec-06-micro-bootstrap" id="toc-sec-06-micro-bootstrap" class="nav-link" data-scroll-target="#sec-06-micro-bootstrap"><span class="header-section-number">6.6.1</span> O Bootstrap já anima — mas como?</a></li>
+  <li><a href="#sec-06-transition" id="toc-sec-06-transition" class="nav-link" data-scroll-target="#sec-06-transition"><span class="header-section-number">6.6.2</span> transition</a></li>
+  <li><a href="#sec-06-transform" id="toc-sec-06-transform" class="nav-link" data-scroll-target="#sec-06-transform"><span class="header-section-number">6.6.3</span> transform</a></li>
+  <li><a href="#sec-06-pseudo" id="toc-sec-06-pseudo" class="nav-link" data-scroll-target="#sec-06-pseudo"><span class="header-section-number">6.6.4</span> Pseudo-classes como gatilhos</a></li>
+  <li><a href="#sec-06-keyframes" id="toc-sec-06-keyframes" class="nav-link" data-scroll-target="#sec-06-keyframes"><span class="header-section-number">6.6.5</span> <span class="citation" data-cites="keyframes">@keyframes</span> — animações autónomas</a></li>
+  <li><a href="#sec-06-boas-praticas" id="toc-sec-06-boas-praticas" class="nav-link" data-scroll-target="#sec-06-boas-praticas"><span class="header-section-number">6.6.6</span> Boas práticas e acessibilidade</a></li>
   </ul></li>
-  <li><a href="#sec-06-sintese" id="toc-sec-06-sintese" class="nav-link" data-scroll-target="#sec-06-sintese"><span class="header-section-number">6.8</span> Síntese do Capítulo</a></li>
-  <li><a href="#sec-06-exercicios" id="toc-sec-06-exercicios" class="nav-link" data-scroll-target="#sec-06-exercicios"><span class="header-section-number">6.9</span> Exercícios</a></li>
+  <li><a href="#sec-06-sintese" id="toc-sec-06-sintese" class="nav-link" data-scroll-target="#sec-06-sintese"><span class="header-section-number">6.7</span> Síntese do Capítulo</a></li>
+  <li><a href="#sec-06-exercicios" id="toc-sec-06-exercicios" class="nav-link" data-scroll-target="#sec-06-exercicios"><span class="header-section-number">6.8</span> Exercícios</a></li>
   </ul>
 </nav>
     </div>
@@ -279,29 +286,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="sec-06-intro" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="sec-06-intro"><span class="header-section-number">6.1</span> Introdução</h2>
+<section id="sec-06-intro" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="sec-06-intro">Introdução</h2>
 <p>O capítulo anterior construiu layouts a partir do zero — box model, floats, Flexbox, Grid. Este capítulo parte dessas fundações e introduz uma camada de abstração: os <strong>frameworks CSS</strong>, bibliotecas que encapsulam padrões de layout e componentes em classes reutilizáveis.</p>
 <p>O Bootstrap é o framework mais utilizado no mundo e o escolhido nesta UC. Mas antes de o usar, é essencial compreender o que ele faz por baixo — a grelha de 12 colunas que estudámos no capítulo anterior, as media queries, os modelos Flexbox — porque essa compreensão é o que distingue quem usa um framework com domínio de quem apenas copia classes.</p>
 <p>A segunda metade do capítulo aborda as <strong>micro-interações</strong> em CSS puro: transições, transformações e animações. O Bootstrap usa estas técnicas internamente; aprenderem-nas em CSS nativo significa levá-las para qualquer projecto, com ou sem framework.</p>
 <hr>
 </section>
-<section id="sec-06-problema" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="sec-06-problema"><span class="header-section-number">6.2</span> 6.1 O Problema que os Frameworks Resolvem</h2>
-<section id="sec-06-problema-escala" class="level3" data-number="6.2.1">
-<h3 data-number="6.2.1" class="anchored" data-anchor-id="sec-06-problema-escala"><span class="header-section-number">6.2.1</span> 6.1.1 CSS manual a escala</h3>
+<section id="sec-06-problema" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="sec-06-problema"><span class="header-section-number">6.1</span> O Problema que os Frameworks Resolvem</h2>
+<section id="sec-06-problema-escala" class="level3" data-number="6.1.1">
+<h3 data-number="6.1.1" class="anchored" data-anchor-id="sec-06-problema-escala"><span class="header-section-number">6.1.1</span> CSS manual a escala</h3>
 <p>Num projecto pequeno, escrever CSS do zero é rápido e directo. A partir de um certo ponto, a escala impõe três problemas estruturais:</p>
 <p><strong>Consistência</strong> — manter os mesmos espaçamentos, tamanhos e cores em dezenas de componentes (botões, formulários, navbars) exige repetição manual. Uma alteração ao estilo de um botão pode implicar editar centenas de linhas em múltiplos ficheiros.</p>
 <p><strong>Responsividade</strong> — escrever <code>@media</code> queries para todos os breakpoints de cada componente é trabalhoso. Vinte componentes com quatro breakpoints cada equivale a oitenta blocos de media queries para manter.</p>
 <p><strong>Manutenção</strong> — o CSS não tem sistema de tipos nem módulos nativos. CSS não estruturado cresce para um estado que os programadores designam por <em>CSS soup</em>: um ficheiro difícil de ler, difícil de alterar sem quebrar algo inesperado.</p>
 </section>
-<section id="sec-06-o-que-e" class="level3" data-number="6.2.2">
-<h3 data-number="6.2.2" class="anchored" data-anchor-id="sec-06-o-que-e"><span class="header-section-number">6.2.2</span> 6.1.2 O que é um framework CSS</h3>
+<section id="sec-06-o-que-e" class="level3" data-number="6.1.2">
+<h3 data-number="6.1.2" class="anchored" data-anchor-id="sec-06-o-que-e"><span class="header-section-number">6.1.2</span> O que é um framework CSS</h3>
 <p>Um framework CSS é uma biblioteca de estilos, componentes e convenções prontas a usar — escritas uma vez, reutilizáveis em qualquer projecto. Em vez de escrever o CSS de cada botão ou navbar do zero, o framework fornece classes que se aplicam directamente no HTML.</p>
 <p>O compromisso é claro: <strong>ganha-se velocidade e consistência</strong>, perde-se algum controlo fino sobre o CSS gerado. Na maioria dos projectos, este compromisso é favorável.</p>
 </section>
-<section id="sec-06-panorama" class="level3" data-number="6.2.3">
-<h3 data-number="6.2.3" class="anchored" data-anchor-id="sec-06-panorama"><span class="header-section-number">6.2.3</span> 6.1.3 Panorama dos frameworks principais</h3>
+<section id="sec-06-panorama" class="level3" data-number="6.1.3">
+<h3 data-number="6.1.3" class="anchored" data-anchor-id="sec-06-panorama"><span class="header-section-number">6.1.3</span> Panorama dos frameworks principais</h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 20%">
@@ -366,10 +373,10 @@ Por que Bootstrap nesta UC?
 <hr>
 </section>
 </section>
-<section id="sec-06-cdn" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="sec-06-cdn"><span class="header-section-number">6.3</span> 6.2 Bootstrap — Instalação via CDN</h2>
-<section id="sec-06-cdn-def" class="level3" data-number="6.3.1">
-<h3 data-number="6.3.1" class="anchored" data-anchor-id="sec-06-cdn-def"><span class="header-section-number">6.3.1</span> 6.2.1 O que é um CDN</h3>
+<section id="sec-06-cdn" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="sec-06-cdn"><span class="header-section-number">6.2</span> Bootstrap — Instalação via CDN</h2>
+<section id="sec-06-cdn-def" class="level3" data-number="6.2.1">
+<h3 data-number="6.2.1" class="anchored" data-anchor-id="sec-06-cdn-def"><span class="header-section-number">6.2.1</span> O que é um CDN</h3>
 <p>Um <strong>CDN</strong> (<em>Content Delivery Network</em>) é uma rede distribuída de servidores que disponibiliza ficheiros estáticos (CSS, JavaScript, fontes) a partir do nó geograficamente mais próximo do utilizador. Usar o Bootstrap via CDN significa não descarregar nem hospedar os ficheiros — o browser carrega-os directamente dos servidores do Bootstrap.</p>
 <p><strong>Vantagens:</strong></p>
 <ul>
@@ -384,8 +391,8 @@ Por que Bootstrap nesta UC?
 <li>Produção: preferível servir os ficheiros do próprio servidor</li>
 </ul>
 </section>
-<section id="sec-06-estrutura-pagina" class="level3" data-number="6.3.2">
-<h3 data-number="6.3.2" class="anchored" data-anchor-id="sec-06-estrutura-pagina"><span class="header-section-number">6.3.2</span> 6.2.2 Estrutura mínima de uma página Bootstrap</h3>
+<section id="sec-06-estrutura-pagina" class="level3" data-number="6.2.2">
+<h3 data-number="6.2.2" class="anchored" data-anchor-id="sec-06-estrutura-pagina"><span class="header-section-number">6.2.2</span> Estrutura mínima de uma página Bootstrap</h3>
 <p>Uma página HTML com Bootstrap requer três elementos essenciais:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!DOCTYPE</span> html<span class="dt">&gt;</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">html</span><span class="ot"> lang</span><span class="op">=</span><span class="st">"pt"</span><span class="dt">&gt;</span></span>
@@ -431,8 +438,8 @@ CSS antes do JS
 </div>
 </div>
 </section>
-<section id="sec-06-css-proprio" class="level3" data-number="6.3.3">
-<h3 data-number="6.3.3" class="anchored" data-anchor-id="sec-06-css-proprio"><span class="header-section-number">6.3.3</span> 6.2.3 CSS personalizado sobre Bootstrap</h3>
+<section id="sec-06-css-proprio" class="level3" data-number="6.2.3">
+<h3 data-number="6.2.3" class="anchored" data-anchor-id="sec-06-css-proprio"><span class="header-section-number">6.2.3</span> CSS personalizado sobre Bootstrap</h3>
 <p>Ao adicionar CSS personalizado, este deve ser incluído <strong>depois</strong> do CSS do Bootstrap para que as regras próprias possam sobrepor as do framework:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">head</span><span class="dt">&gt;</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">&lt;!-- 1. Bootstrap CSS --&gt;</span></span>
@@ -444,10 +451,10 @@ CSS antes do JS
 <hr>
 </section>
 </section>
-<section id="sec-06-grid" class="level2" data-number="6.4">
-<h2 data-number="6.4" class="anchored" data-anchor-id="sec-06-grid"><span class="header-section-number">6.4</span> 6.3 O Sistema de Grid Bootstrap</h2>
-<section id="sec-06-grid-crc" class="level3" data-number="6.4.1">
-<h3 data-number="6.4.1" class="anchored" data-anchor-id="sec-06-grid-crc"><span class="header-section-number">6.4.1</span> 6.3.1 Container, row e col</h3>
+<section id="sec-06-grid" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="sec-06-grid"><span class="header-section-number">6.3</span> O Sistema de Grid Bootstrap</h2>
+<section id="sec-06-grid-crc" class="level3" data-number="6.3.1">
+<h3 data-number="6.3.1" class="anchored" data-anchor-id="sec-06-grid-crc"><span class="header-section-number">6.3.1</span> Container, row e col</h3>
 <p>O grid Bootstrap assenta em três classes hierárquicas que espelham exactamente a grelha de 12 colunas estudada no capítulo anterior — a diferença é que o Bootstrap gere o clearfix, os gutters e a responsividade automaticamente.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">"container"</span><span class="dt">&gt;</span>         <span class="co">&lt;!-- centra e define largura máxima --&gt;</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">"row g-3"</span><span class="dt">&gt;</span>         <span class="co">&lt;!-- linha de grelha; g-3 = gutter de 1rem --&gt;</span></span>
@@ -495,8 +502,8 @@ CSS antes do JS
   </div>
 </div>
 </section>
-<section id="sec-06-breakpoints" class="level3" data-number="6.4.2">
-<h3 data-number="6.4.2" class="anchored" data-anchor-id="sec-06-breakpoints"><span class="header-section-number">6.4.2</span> 6.3.2 Os 6 breakpoints do Bootstrap</h3>
+<section id="sec-06-breakpoints" class="level3" data-number="6.3.2">
+<h3 data-number="6.3.2" class="anchored" data-anchor-id="sec-06-breakpoints"><span class="header-section-number">6.3.2</span> Os 6 breakpoints do Bootstrap</h3>
 <p>O Bootstrap define seis pontos de quebra, todos com <code>min-width</code> — confirmando que o Bootstrap é <strong>mobile-first por definição</strong>. Abaixo de 576px não existe media query; o CSS base aplica-se a todos os tamanhos.</p>
 <table class="caption-top table">
 <thead>
@@ -560,8 +567,8 @@ Container ≠ Breakpoint
 </div>
 </div>
 </section>
-<section id="sec-06-responsivo" class="level3" data-number="6.4.3">
-<h3 data-number="6.4.3" class="anchored" data-anchor-id="sec-06-responsivo"><span class="header-section-number">6.4.3</span> 6.3.3 Classes responsivas — col-{bp}-{n}</h3>
+<section id="sec-06-responsivo" class="level3" data-number="6.3.3">
+<h3 data-number="6.3.3" class="anchored" data-anchor-id="sec-06-responsivo"><span class="header-section-number">6.3.3</span> Classes responsivas — col-{bp}-{n}</h3>
 <p>A responsividade Bootstrap é <strong>declarativa</strong>: especifica-se no HTML como cada coluna se comporta a cada breakpoint, sem escrever uma única media query:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Uma coluna que se adapta automaticamente:</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">     mobile (&lt; 768px): linha completa</span></span>
@@ -577,10 +584,10 @@ Container ≠ Breakpoint
 <hr>
 </section>
 </section>
-<section id="sec-06-componentes" class="level2" data-number="6.5">
-<h2 data-number="6.5" class="anchored" data-anchor-id="sec-06-componentes"><span class="header-section-number">6.5</span> 6.4 Componentes Bootstrap</h2>
-<section id="sec-06-navbar" class="level3" data-number="6.5.1">
-<h3 data-number="6.5.1" class="anchored" data-anchor-id="sec-06-navbar"><span class="header-section-number">6.5.1</span> 6.4.1 Navbar</h3>
+<section id="sec-06-componentes" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="sec-06-componentes"><span class="header-section-number">6.4</span> Componentes Bootstrap</h2>
+<section id="sec-06-navbar" class="level3" data-number="6.4.1">
+<h3 data-number="6.4.1" class="anchored" data-anchor-id="sec-06-navbar"><span class="header-section-number">6.4.1</span> Navbar</h3>
 <p>A navbar Bootstrap é responsiva por natureza: colapsa em mobile (mostrando o botão hambúrguer) e expande a partir do breakpoint indicado em <code>navbar-expand-{bp}</code>.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">nav</span><span class="ot"> class</span><span class="op">=</span><span class="st">"navbar navbar-expand-lg bg-dark navbar-dark"</span><span class="dt">&gt;</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">"container"</span><span class="dt">&gt;</span></span>
@@ -629,8 +636,8 @@ Container ≠ Breakpoint
   </div>
 </div>
 </section>
-<section id="sec-06-cards" class="level3" data-number="6.5.2">
-<h3 data-number="6.5.2" class="anchored" data-anchor-id="sec-06-cards"><span class="header-section-number">6.5.2</span> 6.4.2 Cards</h3>
+<section id="sec-06-cards" class="level3" data-number="6.4.2">
+<h3 data-number="6.4.2" class="anchored" data-anchor-id="sec-06-cards"><span class="header-section-number">6.4.2</span> Cards</h3>
 <p>O card é o componente de conteúdo mais versátil do Bootstrap — combina imagem, texto e acção num bloco visual consistente.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">"card"</span><span class="ot"> style</span><span class="op">=</span><span class="st">"width: 18rem;"</span><span class="dt">&gt;</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">img</span><span class="ot"> src</span><span class="op">=</span><span class="st">"foto.jpg"</span><span class="ot"> class</span><span class="op">=</span><span class="st">"card-img-top"</span><span class="ot"> alt</span><span class="op">=</span><span class="st">"Imagem do projecto"</span><span class="dt">&gt;</span></span>
@@ -699,8 +706,8 @@ Container ≠ Breakpoint
   </div>
 </div>
 </section>
-<section id="sec-06-buttons" class="level3" data-number="6.5.3">
-<h3 data-number="6.5.3" class="anchored" data-anchor-id="sec-06-buttons"><span class="header-section-number">6.5.3</span> 6.4.3 Buttons</h3>
+<section id="sec-06-buttons" class="level3" data-number="6.4.3">
+<h3 data-number="6.4.3" class="anchored" data-anchor-id="sec-06-buttons"><span class="header-section-number">6.4.3</span> Buttons</h3>
 <p>Os botões Bootstrap seguem o padrão <code>btn</code> + <code>btn-{variante}</code>, com variantes sólidas e de contorno (<em>outline</em>), e três tamanhos.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Variantes sólidas --&gt;</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">button</span><span class="ot"> class</span><span class="op">=</span><span class="st">"btn btn-primary"</span><span class="dt">&gt;</span>Primary<span class="dt">&lt;/</span><span class="kw">button</span><span class="dt">&gt;</span></span>
@@ -743,8 +750,8 @@ Container ≠ Breakpoint
   </div>
 </div>
 </section>
-<section id="sec-06-forms" class="level3" data-number="6.5.4">
-<h3 data-number="6.5.4" class="anchored" data-anchor-id="sec-06-forms"><span class="header-section-number">6.5.4</span> 6.4.4 Forms</h3>
+<section id="sec-06-forms" class="level3" data-number="6.4.4">
+<h3 data-number="6.4.4" class="anchored" data-anchor-id="sec-06-forms"><span class="header-section-number">6.4.4</span> Forms</h3>
 <div class="sourceCode" id="cb8"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">form</span><span class="dt">&gt;</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">"mb-3"</span><span class="dt">&gt;</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">label</span><span class="ot"> for</span><span class="op">=</span><span class="st">"email"</span><span class="ot"> class</span><span class="op">=</span><span class="st">"form-label"</span><span class="dt">&gt;</span>Endereço de email<span class="dt">&lt;/</span><span class="kw">label</span><span class="dt">&gt;</span></span>
@@ -784,11 +791,11 @@ Container ≠ Breakpoint
 <hr>
 </section>
 </section>
-<section id="sec-06-utilitarios" class="level2" data-number="6.6">
-<h2 data-number="6.6" class="anchored" data-anchor-id="sec-06-utilitarios"><span class="header-section-number">6.6</span> 6.5 Utilitários Bootstrap</h2>
+<section id="sec-06-utilitarios" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="sec-06-utilitarios"><span class="header-section-number">6.5</span> Utilitários Bootstrap</h2>
 <p>Os utilitários são classes atómicas que substituem CSS de uma linha — aplicadas directamente no HTML, sem escrever regras adicionais.</p>
-<section id="sec-06-spacing" class="level3" data-number="6.6.1">
-<h3 data-number="6.6.1" class="anchored" data-anchor-id="sec-06-spacing"><span class="header-section-number">6.6.1</span> 6.5.1 Spacing — margin e padding</h3>
+<section id="sec-06-spacing" class="level3" data-number="6.5.1">
+<h3 data-number="6.5.1" class="anchored" data-anchor-id="sec-06-spacing"><span class="header-section-number">6.5.1</span> Spacing — margin e padding</h3>
 <p>O padrão é <code>{tipo}{lado}-{escala}</code>, onde o tipo é <code>m</code> (margin) ou <code>p</code> (padding), o lado é opcional (<code>t</code>, <code>b</code>, <code>s</code>, <code>e</code>, <code>x</code>, <code>y</code>), e a escala vai de 0 a 5 (em múltiplos de <code>0.25rem</code>) ou <code>auto</code>.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">"mt-3"</span><span class="dt">&gt;</span>   <span class="co">&lt;!-- margin-top: 1rem --&gt;</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">"mb-2"</span><span class="dt">&gt;</span>   <span class="co">&lt;!-- margin-bottom: 0.5rem --&gt;</span></span>
@@ -838,8 +845,8 @@ Container ≠ Breakpoint
 </tbody>
 </table>
 </section>
-<section id="sec-06-utilitarios-outros" class="level3" data-number="6.6.2">
-<h3 data-number="6.6.2" class="anchored" data-anchor-id="sec-06-utilitarios-outros"><span class="header-section-number">6.6.2</span> 6.5.2 Display, Flexbox e texto</h3>
+<section id="sec-06-utilitarios-outros" class="level3" data-number="6.5.2">
+<h3 data-number="6.5.2" class="anchored" data-anchor-id="sec-06-utilitarios-outros"><span class="header-section-number">6.5.2</span> Display, Flexbox e texto</h3>
 <div class="sourceCode" id="cb10"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Display --&gt;</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">"d-none"</span><span class="dt">&gt;</span>    <span class="co">&lt;!-- display: none --&gt;</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">"d-flex"</span><span class="dt">&gt;</span>    <span class="co">&lt;!-- display: flex --&gt;</span></span>
@@ -865,10 +872,10 @@ Container ≠ Breakpoint
 <hr>
 </section>
 </section>
-<section id="sec-06-micro" class="level2" data-number="6.7">
-<h2 data-number="6.7" class="anchored" data-anchor-id="sec-06-micro"><span class="header-section-number">6.7</span> 6.6 Micro-interações em CSS Puro</h2>
-<section id="sec-06-micro-bootstrap" class="level3" data-number="6.7.1">
-<h3 data-number="6.7.1" class="anchored" data-anchor-id="sec-06-micro-bootstrap"><span class="header-section-number">6.7.1</span> 6.6.1 O Bootstrap já anima — mas como?</h3>
+<section id="sec-06-micro" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="sec-06-micro"><span class="header-section-number">6.6</span> Micro-interações em CSS Puro</h2>
+<section id="sec-06-micro-bootstrap" class="level3" data-number="6.6.1">
+<h3 data-number="6.6.1" class="anchored" data-anchor-id="sec-06-micro-bootstrap"><span class="header-section-number">6.6.1</span> O Bootstrap já anima — mas como?</h3>
 <p>Se inspeccionarmos o CSS do Bootstrap com as DevTools do browser (<strong>F12 → Sources → bootstrap.min.css</strong>), encontramos isto:</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode css code-with-copy"><code class="sourceCode css"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">/* Bootstrap internals — transition nos botões */</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">.btn</span> {</span>
@@ -885,8 +892,8 @@ Container ≠ Breakpoint
 <span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="fu">.fade</span> { <span class="kw">transition</span><span class="ch">:</span> <span class="dv">opacity .15</span><span class="dt">s</span> <span class="dv">linear</span><span class="op">;</span> }</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>O efeito de hover dos botões, a abertura suave da navbar, o fade dos modals — nada disto é JavaScript. É CSS puro. O Bootstrap escreve as transições por nós; as secções seguintes ensinam a fazê-lo por conta própria, em qualquer contexto, com ou sem framework.</p>
 </section>
-<section id="sec-06-transition" class="level3" data-number="6.7.2">
-<h3 data-number="6.7.2" class="anchored" data-anchor-id="sec-06-transition"><span class="header-section-number">6.7.2</span> 6.6.2 transition</h3>
+<section id="sec-06-transition" class="level3" data-number="6.6.2">
+<h3 data-number="6.6.2" class="anchored" data-anchor-id="sec-06-transition"><span class="header-section-number">6.6.2</span> transition</h3>
 <p>A propriedade <code>transition</code> suaviza a mudança de qualquer propriedade CSS ao longo do tempo. A sintaxe é:</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode css code-with-copy"><code class="sourceCode css"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>transition<span class="in">:</span> propriedade duração easing atraso;</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb13"><pre class="sourceCode css code-with-copy"><code class="sourceCode css"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">/* Exemplo simples: mudar a cor de fundo em 0.3s */</span></span>
@@ -990,8 +997,8 @@ Container ≠ Breakpoint
 </tbody>
 </table>
 </section>
-<section id="sec-06-transform" class="level3" data-number="6.7.3">
-<h3 data-number="6.7.3" class="anchored" data-anchor-id="sec-06-transform"><span class="header-section-number">6.7.3</span> 6.6.3 transform</h3>
+<section id="sec-06-transform" class="level3" data-number="6.6.3">
+<h3 data-number="6.6.3" class="anchored" data-anchor-id="sec-06-transform"><span class="header-section-number">6.6.3</span> transform</h3>
 <p>A propriedade <code>transform</code> modifica a aparência visual de um elemento — movendo-o, escalando-o ou rodando-o — <strong>sem alterar o fluxo do documento</strong>. Os elementos vizinhos não se deslocam. O browser usa aceleração GPU, o que torna as animações com <code>transform</code> mais eficientes do que animar <code>top</code> ou <code>left</code>.</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode css code-with-copy"><code class="sourceCode css"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">/* Mover */</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">.el</span><span class="in">:hover</span> { <span class="kw">transform</span><span class="ch">:</span> <span class="fu">translateY(</span><span class="dv">-8</span><span class="dt">px</span><span class="fu">)</span><span class="op">;</span> }   <span class="co">/* desloca para cima 8px */</span></span>
@@ -1056,8 +1063,8 @@ Container ≠ Breakpoint
   </div>
 </div>
 </section>
-<section id="sec-06-pseudo" class="level3" data-number="6.7.4">
-<h3 data-number="6.7.4" class="anchored" data-anchor-id="sec-06-pseudo"><span class="header-section-number">6.7.4</span> 6.6.4 Pseudo-classes como gatilhos</h3>
+<section id="sec-06-pseudo" class="level3" data-number="6.6.4">
+<h3 data-number="6.6.4" class="anchored" data-anchor-id="sec-06-pseudo"><span class="header-section-number">6.6.4</span> Pseudo-classes como gatilhos</h3>
 <p>As pseudo-classes definem <strong>estados</strong> de um elemento — são o mecanismo que activa as micro-interações sem JavaScript.</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode css code-with-copy"><code class="sourceCode css"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.btn</span> {</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">background</span><span class="ch">:</span> <span class="cn">#0d6efd</span><span class="op">;</span></span>
@@ -1150,8 +1157,8 @@ Container ≠ Breakpoint
   </div>
 </div>
 </section>
-<section id="sec-06-keyframes" class="level3" data-number="6.7.5">
-<h3 data-number="6.7.5" class="anchored" data-anchor-id="sec-06-keyframes"><span class="header-section-number">6.7.5</span> 6.6.5 <span class="citation" data-cites="keyframes">@keyframes</span> — animações autónomas</h3>
+<section id="sec-06-keyframes" class="level3" data-number="6.6.5">
+<h3 data-number="6.6.5" class="anchored" data-anchor-id="sec-06-keyframes"><span class="header-section-number">6.6.5</span> <span class="citation" data-cites="keyframes">@keyframes</span> — animações autónomas</h3>
 <p>Enquanto <code>transition</code> reage a uma mudança de estado (hover, focus), o <code>@keyframes</code> define uma sequência de estados que corre automaticamente, independentemente da interação do utilizador.</p>
 <p>A utilização é um processo em dois passos:</p>
 <p><strong>Passo 1 — Definir a animação</strong> com <code>@keyframes</code>:</p>
@@ -1259,8 +1266,8 @@ animation-fill-mode: forwards
   </div>
 </div>
 </section>
-<section id="sec-06-boas-praticas" class="level3" data-number="6.7.6">
-<h3 data-number="6.7.6" class="anchored" data-anchor-id="sec-06-boas-praticas"><span class="header-section-number">6.7.6</span> 6.6.6 Boas práticas e acessibilidade</h3>
+<section id="sec-06-boas-praticas" class="level3" data-number="6.6.6">
+<h3 data-number="6.6.6" class="anchored" data-anchor-id="sec-06-boas-praticas"><span class="header-section-number">6.6.6</span> Boas práticas e acessibilidade</h3>
 <div class="sourceCode" id="cb18"><pre class="sourceCode css code-with-copy"><code class="sourceCode css"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">/* ✓ Especificar propriedades — não usar transition: all */</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">.btn</span> { <span class="kw">transition</span><span class="ch">:</span> <span class="dv">background-color 0.2</span><span class="dt">s</span> <span class="dv">ease</span><span class="op">,</span> <span class="dv">transform 0.1</span><span class="dt">s</span> <span class="dv">ease</span><span class="op">;</span> }</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1286,16 +1293,16 @@ animation-fill-mode: forwards
 <hr>
 </section>
 </section>
-<section id="sec-06-sintese" class="level2" data-number="6.8">
-<h2 data-number="6.8" class="anchored" data-anchor-id="sec-06-sintese"><span class="header-section-number">6.8</span> Síntese do Capítulo</h2>
+<section id="sec-06-sintese" class="level2" data-number="6.7">
+<h2 data-number="6.7" class="anchored" data-anchor-id="sec-06-sintese"><span class="header-section-number">6.7</span> Síntese do Capítulo</h2>
 <p>Os <strong>frameworks CSS</strong> resolvem o problema da consistência e da responsividade a escala. O Bootstrap é o mais adoptado: inclui via CDN, usa classes no HTML, e encapsula as media queries, o grid e os componentes mais comuns.</p>
 <p>O <strong>grid Bootstrap</strong> é o sistema de 12 colunas do capítulo anterior, automatizado e responsivo. Os seis breakpoints (<code>xs</code> a <code>xxl</code>) usam todos <code>min-width</code> — o Bootstrap é mobile-first por definição. As classes <code>col-{bp}-{n}</code> aplicam-se a partir do breakpoint indicado e são cumulativas.</p>
 <p>Os <strong>componentes</strong> (navbar, cards, buttons, forms) e os <strong>utilitários</strong> (spacing, display, flex, texto, cores) eliminam CSS repetitivo. A regra de ouro é incluir o CSS próprio <strong>depois</strong> do Bootstrap para poder sobrepor estilos.</p>
 <p>As <strong>micro-interações</strong> — <code>transition</code>, <code>transform</code>, pseudo-classes e <code>@keyframes</code> — são CSS puro, independentes do Bootstrap. O Bootstrap usa-as internamente; aprendê-las em CSS nativo significa usá-las em qualquer projecto. <code>transform</code> e <code>opacity</code> são as propriedades a animar: usam GPU, não causam reflow, e produzem transições fluidas. Respeitar <code>prefers-reduced-motion</code> e nunca remover <code>:focus</code> sem alternativa são requisitos de acessibilidade, não opções.</p>
 <hr>
 </section>
-<section id="sec-06-exercicios" class="level2" data-number="6.9">
-<h2 data-number="6.9" class="anchored" data-anchor-id="sec-06-exercicios"><span class="header-section-number">6.9</span> Exercícios</h2>
+<section id="sec-06-exercicios" class="level2" data-number="6.8">
+<h2 data-number="6.8" class="anchored" data-anchor-id="sec-06-exercicios"><span class="header-section-number">6.8</span> Exercícios</h2>
 <div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -2020,6 +2027,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../capitulos/cap07.html" class="pagination-link" aria-label="SASS Fundamental">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">SASS Fundamental</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Código fonte</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="sourceCode" id="cb19" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
@@ -2030,7 +2040,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="an">lang:</span><span class="co"> pt-PT</span></span>
 <span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="fu">## Introdução {#sec-06-intro}</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="fu">## Introdução {#sec-06-intro .unnumbered}</span></span>
 <span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>O capítulo anterior construiu layouts a partir do zero — box model, floats,</span>
 <span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>Flexbox, Grid. Este capítulo parte dessas fundações e introduz uma camada de</span>
@@ -2050,9 +2060,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a>---</span>
 <span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a><span class="fu">## 6.1 O Problema que os Frameworks Resolvem {#sec-06-problema}</span></span>
+<span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a><span class="fu">## O Problema que os Frameworks Resolvem {#sec-06-problema}</span></span>
 <span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-31"><a href="#cb19-31" aria-hidden="true" tabindex="-1"></a><span class="fu">### 6.1.1 CSS manual a escala {#sec-06-problema-escala}</span></span>
+<span id="cb19-31"><a href="#cb19-31" aria-hidden="true" tabindex="-1"></a><span class="fu">### CSS manual a escala {#sec-06-problema-escala}</span></span>
 <span id="cb19-32"><a href="#cb19-32" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-33"><a href="#cb19-33" aria-hidden="true" tabindex="-1"></a>Num projecto pequeno, escrever CSS do zero é rápido e directo. A partir de</span>
 <span id="cb19-34"><a href="#cb19-34" aria-hidden="true" tabindex="-1"></a>um certo ponto, a escala impõe três problemas estruturais:</span>
@@ -2070,7 +2080,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb19-46"><a href="#cb19-46" aria-hidden="true" tabindex="-1"></a>estruturado cresce para um estado que os programadores designam por *CSS soup*:</span>
 <span id="cb19-47"><a href="#cb19-47" aria-hidden="true" tabindex="-1"></a>um ficheiro difícil de ler, difícil de alterar sem quebrar algo inesperado.</span>
 <span id="cb19-48"><a href="#cb19-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-49"><a href="#cb19-49" aria-hidden="true" tabindex="-1"></a><span class="fu">### 6.1.2 O que é um framework CSS {#sec-06-o-que-e}</span></span>
+<span id="cb19-49"><a href="#cb19-49" aria-hidden="true" tabindex="-1"></a><span class="fu">### O que é um framework CSS {#sec-06-o-que-e}</span></span>
 <span id="cb19-50"><a href="#cb19-50" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-51"><a href="#cb19-51" aria-hidden="true" tabindex="-1"></a>Um framework CSS é uma biblioteca de estilos, componentes e convenções</span>
 <span id="cb19-52"><a href="#cb19-52" aria-hidden="true" tabindex="-1"></a>prontas a usar — escritas uma vez, reutilizáveis em qualquer projecto. Em</span>
@@ -2081,7 +2091,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb19-57"><a href="#cb19-57" aria-hidden="true" tabindex="-1"></a>controlo fino sobre o CSS gerado. Na maioria dos projectos, este compromisso</span>
 <span id="cb19-58"><a href="#cb19-58" aria-hidden="true" tabindex="-1"></a>é favorável.</span>
 <span id="cb19-59"><a href="#cb19-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-60"><a href="#cb19-60" aria-hidden="true" tabindex="-1"></a><span class="fu">### 6.1.3 Panorama dos frameworks principais {#sec-06-panorama}</span></span>
+<span id="cb19-60"><a href="#cb19-60" aria-hidden="true" tabindex="-1"></a><span class="fu">### Panorama dos frameworks principais {#sec-06-panorama}</span></span>
 <span id="cb19-61"><a href="#cb19-61" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-62"><a href="#cb19-62" aria-hidden="true" tabindex="-1"></a>| Framework | Abordagem | Ponto forte | Caso de uso típico |</span>
 <span id="cb19-63"><a href="#cb19-63" aria-hidden="true" tabindex="-1"></a>|:----------|:----------|:------------|:------------------|</span>
@@ -2102,9 +2112,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb19-78"><a href="#cb19-78" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-79"><a href="#cb19-79" aria-hidden="true" tabindex="-1"></a>---</span>
 <span id="cb19-80"><a href="#cb19-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-81"><a href="#cb19-81" aria-hidden="true" tabindex="-1"></a><span class="fu">## 6.2 Bootstrap — Instalação via CDN {#sec-06-cdn}</span></span>
+<span id="cb19-81"><a href="#cb19-81" aria-hidden="true" tabindex="-1"></a><span class="fu">## Bootstrap — Instalação via CDN {#sec-06-cdn}</span></span>
 <span id="cb19-82"><a href="#cb19-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-83"><a href="#cb19-83" aria-hidden="true" tabindex="-1"></a><span class="fu">### 6.2.1 O que é um CDN {#sec-06-cdn-def}</span></span>
+<span id="cb19-83"><a href="#cb19-83" aria-hidden="true" tabindex="-1"></a><span class="fu">### O que é um CDN {#sec-06-cdn-def}</span></span>
 <span id="cb19-84"><a href="#cb19-84" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-85"><a href="#cb19-85" aria-hidden="true" tabindex="-1"></a>Um **CDN** (*Content Delivery Network*) é uma rede distribuída de servidores</span>
 <span id="cb19-86"><a href="#cb19-86" aria-hidden="true" tabindex="-1"></a>que disponibiliza ficheiros estáticos (CSS, JavaScript, fontes) a partir do</span>
@@ -2125,7 +2135,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb19-101"><a href="#cb19-101" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Impossível personalizar (alterar variáveis SASS, etc.)</span>
 <span id="cb19-102"><a href="#cb19-102" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Produção: preferível servir os ficheiros do próprio servidor</span>
 <span id="cb19-103"><a href="#cb19-103" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-104"><a href="#cb19-104" aria-hidden="true" tabindex="-1"></a><span class="fu">### 6.2.2 Estrutura mínima de uma página Bootstrap {#sec-06-estrutura-pagina}</span></span>
+<span id="cb19-104"><a href="#cb19-104" aria-hidden="true" tabindex="-1"></a><span class="fu">### Estrutura mínima de uma página Bootstrap {#sec-06-estrutura-pagina}</span></span>
 <span id="cb19-105"><a href="#cb19-105" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-106"><a href="#cb19-106" aria-hidden="true" tabindex="-1"></a>Uma página HTML com Bootstrap requer três elementos essenciais:</span>
 <span id="cb19-107"><a href="#cb19-107" aria-hidden="true" tabindex="-1"></a></span>
@@ -2170,7 +2180,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb19-146"><a href="#cb19-146" aria-hidden="true" tabindex="-1"></a>já o Popper.js — não é necessário adicioná-lo separadamente.</span>
 <span id="cb19-147"><a href="#cb19-147" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb19-148"><a href="#cb19-148" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-149"><a href="#cb19-149" aria-hidden="true" tabindex="-1"></a><span class="fu">### 6.2.3 CSS personalizado sobre Bootstrap {#sec-06-css-proprio}</span></span>
+<span id="cb19-149"><a href="#cb19-149" aria-hidden="true" tabindex="-1"></a><span class="fu">### CSS personalizado sobre Bootstrap {#sec-06-css-proprio}</span></span>
 <span id="cb19-150"><a href="#cb19-150" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-151"><a href="#cb19-151" aria-hidden="true" tabindex="-1"></a>Ao adicionar CSS personalizado, este deve ser incluído **depois** do CSS</span>
 <span id="cb19-152"><a href="#cb19-152" aria-hidden="true" tabindex="-1"></a>do Bootstrap para que as regras próprias possam sobrepor as do framework:</span>
@@ -2187,9 +2197,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb19-163"><a href="#cb19-163" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-164"><a href="#cb19-164" aria-hidden="true" tabindex="-1"></a>---</span>
 <span id="cb19-165"><a href="#cb19-165" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-166"><a href="#cb19-166" aria-hidden="true" tabindex="-1"></a><span class="fu">## 6.3 O Sistema de Grid Bootstrap {#sec-06-grid}</span></span>
+<span id="cb19-166"><a href="#cb19-166" aria-hidden="true" tabindex="-1"></a><span class="fu">## O Sistema de Grid Bootstrap {#sec-06-grid}</span></span>
 <span id="cb19-167"><a href="#cb19-167" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-168"><a href="#cb19-168" aria-hidden="true" tabindex="-1"></a><span class="fu">### 6.3.1 Container, row e col {#sec-06-grid-crc}</span></span>
+<span id="cb19-168"><a href="#cb19-168" aria-hidden="true" tabindex="-1"></a><span class="fu">### Container, row e col {#sec-06-grid-crc}</span></span>
 <span id="cb19-169"><a href="#cb19-169" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-170"><a href="#cb19-170" aria-hidden="true" tabindex="-1"></a>O grid Bootstrap assenta em três classes hierárquicas que espelham</span>
 <span id="cb19-171"><a href="#cb19-171" aria-hidden="true" tabindex="-1"></a>exactamente a grelha de 12 colunas estudada no capítulo anterior — a</span>
@@ -2249,7 +2259,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb19-225"><a href="#cb19-225" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/div&gt;</span></span>
 <span id="cb19-226"><a href="#cb19-226" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb19-227"><a href="#cb19-227" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-228"><a href="#cb19-228" aria-hidden="true" tabindex="-1"></a><span class="fu">### 6.3.2 Os 6 breakpoints do Bootstrap {#sec-06-breakpoints}</span></span>
+<span id="cb19-228"><a href="#cb19-228" aria-hidden="true" tabindex="-1"></a><span class="fu">### Os 6 breakpoints do Bootstrap {#sec-06-breakpoints}</span></span>
 <span id="cb19-229"><a href="#cb19-229" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-230"><a href="#cb19-230" aria-hidden="true" tabindex="-1"></a>O Bootstrap define seis pontos de quebra, todos com <span class="in">`min-width`</span> —</span>
 <span id="cb19-231"><a href="#cb19-231" aria-hidden="true" tabindex="-1"></a>confirmando que o Bootstrap é **mobile-first por definição**. Abaixo de</span>
@@ -2272,7 +2282,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb19-248"><a href="#cb19-248" aria-hidden="true" tabindex="-1"></a>excepção: ocupa sempre 100% da largura.</span>
 <span id="cb19-249"><a href="#cb19-249" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb19-250"><a href="#cb19-250" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-251"><a href="#cb19-251" aria-hidden="true" tabindex="-1"></a><span class="fu">### 6.3.3 Classes responsivas — col-{bp}-{n} {#sec-06-responsivo}</span></span>
+<span id="cb19-251"><a href="#cb19-251" aria-hidden="true" tabindex="-1"></a><span class="fu">### Classes responsivas — col-{bp}-{n} {#sec-06-responsivo}</span></span>
 <span id="cb19-252"><a href="#cb19-252" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-253"><a href="#cb19-253" aria-hidden="true" tabindex="-1"></a>A responsividade Bootstrap é **declarativa**: especifica-se no HTML como</span>
 <span id="cb19-254"><a href="#cb19-254" aria-hidden="true" tabindex="-1"></a>cada coluna se comporta a cada breakpoint, sem escrever uma única media</span>
@@ -2296,9 +2306,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb19-272"><a href="#cb19-272" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-273"><a href="#cb19-273" aria-hidden="true" tabindex="-1"></a>---</span>
 <span id="cb19-274"><a href="#cb19-274" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-275"><a href="#cb19-275" aria-hidden="true" tabindex="-1"></a><span class="fu">## 6.4 Componentes Bootstrap {#sec-06-componentes}</span></span>
+<span id="cb19-275"><a href="#cb19-275" aria-hidden="true" tabindex="-1"></a><span class="fu">## Componentes Bootstrap {#sec-06-componentes}</span></span>
 <span id="cb19-276"><a href="#cb19-276" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-277"><a href="#cb19-277" aria-hidden="true" tabindex="-1"></a><span class="fu">### 6.4.1 Navbar {#sec-06-navbar}</span></span>
+<span id="cb19-277"><a href="#cb19-277" aria-hidden="true" tabindex="-1"></a><span class="fu">### Navbar {#sec-06-navbar}</span></span>
 <span id="cb19-278"><a href="#cb19-278" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-279"><a href="#cb19-279" aria-hidden="true" tabindex="-1"></a>A navbar Bootstrap é responsiva por natureza: colapsa em mobile (mostrando</span>
 <span id="cb19-280"><a href="#cb19-280" aria-hidden="true" tabindex="-1"></a>o botão hambúrguer) e expande a partir do breakpoint indicado em</span>
@@ -2356,7 +2366,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb19-332"><a href="#cb19-332" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/div&gt;</span></span>
 <span id="cb19-333"><a href="#cb19-333" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb19-334"><a href="#cb19-334" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-335"><a href="#cb19-335" aria-hidden="true" tabindex="-1"></a><span class="fu">### 6.4.2 Cards {#sec-06-cards}</span></span>
+<span id="cb19-335"><a href="#cb19-335" aria-hidden="true" tabindex="-1"></a><span class="fu">### Cards {#sec-06-cards}</span></span>
 <span id="cb19-336"><a href="#cb19-336" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-337"><a href="#cb19-337" aria-hidden="true" tabindex="-1"></a>O card é o componente de conteúdo mais versátil do Bootstrap — combina</span>
 <span id="cb19-338"><a href="#cb19-338" aria-hidden="true" tabindex="-1"></a>imagem, texto e acção num bloco visual consistente.</span>
@@ -2433,7 +2443,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb19-409"><a href="#cb19-409" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/div&gt;</span></span>
 <span id="cb19-410"><a href="#cb19-410" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb19-411"><a href="#cb19-411" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-412"><a href="#cb19-412" aria-hidden="true" tabindex="-1"></a><span class="fu">### 6.4.3 Buttons {#sec-06-buttons}</span></span>
+<span id="cb19-412"><a href="#cb19-412" aria-hidden="true" tabindex="-1"></a><span class="fu">### Buttons {#sec-06-buttons}</span></span>
 <span id="cb19-413"><a href="#cb19-413" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-414"><a href="#cb19-414" aria-hidden="true" tabindex="-1"></a>Os botões Bootstrap seguem o padrão <span class="in">`btn`</span> + <span class="in">`btn-{variante}`</span>, com variantes</span>
 <span id="cb19-415"><a href="#cb19-415" aria-hidden="true" tabindex="-1"></a>sólidas e de contorno (*outline*), e três tamanhos.</span>
@@ -2484,7 +2494,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb19-460"><a href="#cb19-460" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/div&gt;</span></span>
 <span id="cb19-461"><a href="#cb19-461" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb19-462"><a href="#cb19-462" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-463"><a href="#cb19-463" aria-hidden="true" tabindex="-1"></a><span class="fu">### 6.4.4 Forms {#sec-06-forms}</span></span>
+<span id="cb19-463"><a href="#cb19-463" aria-hidden="true" tabindex="-1"></a><span class="fu">### Forms {#sec-06-forms}</span></span>
 <span id="cb19-464"><a href="#cb19-464" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-465"><a href="#cb19-465" aria-hidden="true" tabindex="-1"></a><span class="in">```html</span></span>
 <span id="cb19-466"><a href="#cb19-466" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">form</span><span class="dt">&gt;</span></span>
@@ -2530,12 +2540,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb19-506"><a href="#cb19-506" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-507"><a href="#cb19-507" aria-hidden="true" tabindex="-1"></a>---</span>
 <span id="cb19-508"><a href="#cb19-508" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-509"><a href="#cb19-509" aria-hidden="true" tabindex="-1"></a><span class="fu">## 6.5 Utilitários Bootstrap {#sec-06-utilitarios}</span></span>
+<span id="cb19-509"><a href="#cb19-509" aria-hidden="true" tabindex="-1"></a><span class="fu">## Utilitários Bootstrap {#sec-06-utilitarios}</span></span>
 <span id="cb19-510"><a href="#cb19-510" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-511"><a href="#cb19-511" aria-hidden="true" tabindex="-1"></a>Os utilitários são classes atómicas que substituem CSS de uma linha —</span>
 <span id="cb19-512"><a href="#cb19-512" aria-hidden="true" tabindex="-1"></a>aplicadas directamente no HTML, sem escrever regras adicionais.</span>
 <span id="cb19-513"><a href="#cb19-513" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-514"><a href="#cb19-514" aria-hidden="true" tabindex="-1"></a><span class="fu">### 6.5.1 Spacing — margin e padding {#sec-06-spacing}</span></span>
+<span id="cb19-514"><a href="#cb19-514" aria-hidden="true" tabindex="-1"></a><span class="fu">### Spacing — margin e padding {#sec-06-spacing}</span></span>
 <span id="cb19-515"><a href="#cb19-515" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-516"><a href="#cb19-516" aria-hidden="true" tabindex="-1"></a>O padrão é <span class="in">`{tipo}{lado}-{escala}`</span>, onde o tipo é <span class="in">`m`</span> (margin) ou <span class="in">`p`</span></span>
 <span id="cb19-517"><a href="#cb19-517" aria-hidden="true" tabindex="-1"></a>(padding), o lado é opcional (<span class="in">`t`</span>, <span class="in">`b`</span>, <span class="in">`s`</span>, <span class="in">`e`</span>, <span class="in">`x`</span>, <span class="in">`y`</span>), e a escala</span>
@@ -2559,7 +2569,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb19-535"><a href="#cb19-535" aria-hidden="true" tabindex="-1"></a>| 4 | 1.5rem | 24px |</span>
 <span id="cb19-536"><a href="#cb19-536" aria-hidden="true" tabindex="-1"></a>| 5 | 3rem | 48px |</span>
 <span id="cb19-537"><a href="#cb19-537" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-538"><a href="#cb19-538" aria-hidden="true" tabindex="-1"></a><span class="fu">### 6.5.2 Display, Flexbox e texto {#sec-06-utilitarios-outros}</span></span>
+<span id="cb19-538"><a href="#cb19-538" aria-hidden="true" tabindex="-1"></a><span class="fu">### Display, Flexbox e texto {#sec-06-utilitarios-outros}</span></span>
 <span id="cb19-539"><a href="#cb19-539" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-540"><a href="#cb19-540" aria-hidden="true" tabindex="-1"></a><span class="in">```html</span></span>
 <span id="cb19-541"><a href="#cb19-541" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Display --&gt;</span></span>
@@ -2588,9 +2598,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb19-564"><a href="#cb19-564" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-565"><a href="#cb19-565" aria-hidden="true" tabindex="-1"></a>---</span>
 <span id="cb19-566"><a href="#cb19-566" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-567"><a href="#cb19-567" aria-hidden="true" tabindex="-1"></a><span class="fu">## 6.6 Micro-interações em CSS Puro {#sec-06-micro}</span></span>
+<span id="cb19-567"><a href="#cb19-567" aria-hidden="true" tabindex="-1"></a><span class="fu">## Micro-interações em CSS Puro {#sec-06-micro}</span></span>
 <span id="cb19-568"><a href="#cb19-568" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-569"><a href="#cb19-569" aria-hidden="true" tabindex="-1"></a><span class="fu">### 6.6.1 O Bootstrap já anima — mas como? {#sec-06-micro-bootstrap}</span></span>
+<span id="cb19-569"><a href="#cb19-569" aria-hidden="true" tabindex="-1"></a><span class="fu">### O Bootstrap já anima — mas como? {#sec-06-micro-bootstrap}</span></span>
 <span id="cb19-570"><a href="#cb19-570" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-571"><a href="#cb19-571" aria-hidden="true" tabindex="-1"></a>Se inspeccionarmos o CSS do Bootstrap com as DevTools do browser</span>
 <span id="cb19-572"><a href="#cb19-572" aria-hidden="true" tabindex="-1"></a>(**F12 → Sources → bootstrap.min.css**), encontramos isto:</span>
@@ -2616,7 +2626,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb19-592"><a href="#cb19-592" aria-hidden="true" tabindex="-1"></a>nós; as secções seguintes ensinam a fazê-lo por conta própria<span class="op">,</span> em qualquer</span>
 <span id="cb19-593"><a href="#cb19-593" aria-hidden="true" tabindex="-1"></a>contexto<span class="op">,</span> com ou sem framework.</span>
 <span id="cb19-594"><a href="#cb19-594" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-595"><a href="#cb19-595" aria-hidden="true" tabindex="-1"></a>### 6<span class="fu">.6.2</span> transition {<span class="pp">#sec-06-transition</span>}</span>
+<span id="cb19-595"><a href="#cb19-595" aria-hidden="true" tabindex="-1"></a>### transition {<span class="pp">#sec-06-transition</span>}</span>
 <span id="cb19-596"><a href="#cb19-596" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-597"><a href="#cb19-597" aria-hidden="true" tabindex="-1"></a>A propriedade `transition` suaviza a mudança de qualquer propriedade CSS</span>
 <span id="cb19-598"><a href="#cb19-598" aria-hidden="true" tabindex="-1"></a>ao longo do tempo. A sintaxe é<span class="in">:</span></span>
@@ -2703,7 +2713,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb19-679"><a href="#cb19-679" aria-hidden="true" tabindex="-1"></a><span class="op">|</span> `easing` <span class="op">|</span> `ease`<span class="op">,</span> `linear`<span class="op">,</span> `ease-in`<span class="op">,</span> `ease-out`<span class="op">,</span> `cubic-bezier<span class="in">()</span>` <span class="op">|</span> Curva de velocidade. <span class="op">|</span></span>
 <span id="cb19-680"><a href="#cb19-680" aria-hidden="true" tabindex="-1"></a><span class="op">|</span> `atraso` <span class="op">|</span> `0s`<span class="op">,</span> `0<span class="fu">.1s</span>` <span class="op">|</span> Espera antes de começar. Opcional. <span class="op">|</span></span>
 <span id="cb19-681"><a href="#cb19-681" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-682"><a href="#cb19-682" aria-hidden="true" tabindex="-1"></a>### 6<span class="fu">.6.3</span> transform {<span class="pp">#sec-06-transform</span>}</span>
+<span id="cb19-682"><a href="#cb19-682" aria-hidden="true" tabindex="-1"></a>### transform {<span class="pp">#sec-06-transform</span>}</span>
 <span id="cb19-683"><a href="#cb19-683" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-684"><a href="#cb19-684" aria-hidden="true" tabindex="-1"></a>A propriedade `transform` modifica a aparência visual de um elemento —</span>
 <span id="cb19-685"><a href="#cb19-685" aria-hidden="true" tabindex="-1"></a>movendo-o<span class="op">,</span> escalando-o ou rodando-o — <span class="op">**</span>sem alterar o fluxo do documento<span class="op">**</span>.</span>
@@ -2779,7 +2789,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb19-755"><a href="#cb19-755" aria-hidden="true" tabindex="-1"></a>&lt;/div<span class="op">&gt;</span></span>
 <span id="cb19-756"><a href="#cb19-756" aria-hidden="true" tabindex="-1"></a>```</span>
 <span id="cb19-757"><a href="#cb19-757" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-758"><a href="#cb19-758" aria-hidden="true" tabindex="-1"></a>### 6<span class="fu">.6.4</span> Pseudo-classes como gatilhos {<span class="pp">#sec-06-pseudo</span>}</span>
+<span id="cb19-758"><a href="#cb19-758" aria-hidden="true" tabindex="-1"></a>### Pseudo-classes como gatilhos {<span class="pp">#sec-06-pseudo</span>}</span>
 <span id="cb19-759"><a href="#cb19-759" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-760"><a href="#cb19-760" aria-hidden="true" tabindex="-1"></a>As pseudo-classes definem <span class="op">**</span>estados<span class="op">**</span> de um elemento — são o mecanismo que</span>
 <span id="cb19-761"><a href="#cb19-761" aria-hidden="true" tabindex="-1"></a>activa as micro-interações sem JavaScript.</span>
@@ -2876,7 +2886,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb19-852"><a href="#cb19-852" aria-hidden="true" tabindex="-1"></a>&lt;/div<span class="op">&gt;</span></span>
 <span id="cb19-853"><a href="#cb19-853" aria-hidden="true" tabindex="-1"></a>```</span>
 <span id="cb19-854"><a href="#cb19-854" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-855"><a href="#cb19-855" aria-hidden="true" tabindex="-1"></a>### 6<span class="fu">.6.5</span> <span class="im">@keyframes</span> — animações autónomas {#sec-06-keyframes}</span>
+<span id="cb19-855"><a href="#cb19-855" aria-hidden="true" tabindex="-1"></a>### <span class="im">@keyframes</span> — animações autónomas {#sec-06-keyframes}</span>
 <span id="cb19-856"><a href="#cb19-856" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-857"><a href="#cb19-857" aria-hidden="true" tabindex="-1"></a>Enquanto `transition` reage a uma mudança de estado <span class="in">(</span>hover<span class="op">,</span> focus<span class="in">)</span><span class="op">,</span> o</span>
 <span id="cb19-858"><a href="#cb19-858" aria-hidden="true" tabindex="-1"></a>`<span class="im">@keyframes</span>` define uma sequência de estados que corre automaticamente,</span>
@@ -2997,7 +3007,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb19-973"><a href="#cb19-973" aria-hidden="true" tabindex="-1"></a>&lt;/div<span class="op">&gt;</span></span>
 <span id="cb19-974"><a href="#cb19-974" aria-hidden="true" tabindex="-1"></a>```</span>
 <span id="cb19-975"><a href="#cb19-975" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-976"><a href="#cb19-976" aria-hidden="true" tabindex="-1"></a>### 6<span class="fu">.6.6</span> Boas práticas e acessibilidade {<span class="pp">#sec-06-boas-praticas</span>}</span>
+<span id="cb19-976"><a href="#cb19-976" aria-hidden="true" tabindex="-1"></a>### Boas práticas e acessibilidade {<span class="pp">#sec-06-boas-praticas</span>}</span>
 <span id="cb19-977"><a href="#cb19-977" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-978"><a href="#cb19-978" aria-hidden="true" tabindex="-1"></a>```css</span>
 <span id="cb19-979"><a href="#cb19-979" aria-hidden="true" tabindex="-1"></a><span class="co">/* ✓ Especificar propriedades — não usar transition: all */</span></span>
